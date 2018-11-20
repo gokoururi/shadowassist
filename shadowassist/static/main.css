@@ -1,0 +1,93 @@
+html, body {
+  background-color: #3d3d3d;
+  padding: 0;
+  margin: 0;
+  font-family: verdana;
+}
+.bg-red {
+  color: #FFF;
+  background: #a64444;
+}
+
+.card-active {
+  color: #853c00;
+  background: #f4d370;
+}
+
+.content {
+  margin-top: 120px;
+  padding: 20px 60px 20px 60px;
+  display: block;
+}
+
+.nav-item a {
+  font-size: 30px;
+}
+
+.nav-btn,
+.prep-btn {
+  font-size: 30px;
+  padding: 30px 30px;
+}
+
+.table {
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 15px !important;
+  min-width: 25rem;
+  max-width: 25rem;
+  */
+}
+
+.card-header {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card .btn {
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, 0.8);
+  z-index: 2;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+.overlay-card {
+  margin-top: 170px;
+  display: inline-block;
+}
+
+.overlay .card-header {
+  font-size: 30px;
+}
+
+.overlay .card {
+  min-width: 800px;
+  max-width: 800px;
+}
+
+.overlay .btn {
+  padding: 40px 40px;
+}
+
+.force-table td {
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+.force-table .btn {
+  min-width: 100px;
+}

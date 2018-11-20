@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<a href="{{ url_for('home', _external=true) }}" class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Zurück</a>
+<h1 class="font-weight-bold text-white ml-5" style="display: inline-block">Zauber auswählen</h1>
+
+{% for spellType in spellTypes %}
+<h2 class="mt-5 font-weight-bold text-white">{{ spellType }}</h2>
+  {% for spell in spells %}
+    {% if spell.type == spellType and spell.alchemical %}
+    <a href="{{ url_for('createPrepSelectContainer', spell_id = spell.id, _external=true) }}"
+       class="btn btn-lg prep-btn btn-block btn-light">
+       {{ spell.name }} (KS{% if spell.drain != 0 %}{{ spell.drain }}{% endif %})
+     </a>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% endblock content %}

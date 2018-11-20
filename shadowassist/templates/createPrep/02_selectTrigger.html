@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<a href="{{ url_for('createPrepSelectContainer',
+                    spell_id=spell_id,
+                    _external=true) }}"
+   class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Zurück</a>
+<h1 class="font-weight-bold text-white ml-5"
+    style="display: inline-block">Auslöser auswählen</h1>
+
+<h2 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}</h2>
+{% for trigger in ['Befehl', 'Berührung', 'Zeitauslöser']%}
+<a href="{{ url_for('createPrepSelectForce', spell_id=spell.id, container=container, trigger=trigger, _external=true) }}"
+   class="btn btn-lg prep-btn btn-block btn-light">{{ trigger }}</a>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<a href="{{ url_for('createPrepSelectPotency',
+                     spell_id=spell_id,
+                     container=container,
+                     trigger=trigger,
+                     force=force,
+                     _external=true) }}"
+   class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Zurück</a>
+<h1 class="font-weight-bold text-white" style="display: inline-block">Entzug widerstehen</h1>
+<a href="{{ url_for('createPrepCreate',
+                     spell_id=spell_id,
+                     container=container,
+                     trigger=trigger,
+                     force=force,
+                     potency=potency,
+                     _external=true) }}"
+   class="btn prep-btn btn-lg btn-light font-weight-bold">Herstellen</a>
+
+<h2 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}, {{ force }}, {{ potency }}</h2>
+
+<h1 class="text-white">Entzug: {{ force + spell.drain }}</<h1></h1>>
+
+{% endblock content %}

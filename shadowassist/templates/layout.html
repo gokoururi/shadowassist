@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#a64444">
+    <meta charset="utf-8">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png', _external=true) }}" type="image/png"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css', _external=true) }}">
+    <title>
+      {% if title %}
+        Shadowassist - {{ title }}
+      {% else %}
+        Shadowassist
+      {% endif %}
+    </title>
+  </head>
+  <body>
+    <script type=text/javascript>
+      //$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+      $SCRIPT_ROOT = {{ request.headers.get('X-Script-Name')|tojson|safe }};
+    </script>
+    <script type=text/javascript src="{{ url_for('static', filename='jquery-3.3.1.min.js', _external=true) }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='main.js', _external=true) }}"></script>
+
+    <div class="pos-f-t fixed-top">
+
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-3">
+      <a href="{{ url_for('home', _external=true) }}" class="nav-btn btn btn-secondary btn-lg btn-block">Präparate</a>
+      <a href="#" class="nav-btn btn btn-light btn-lg btn-block">Alchemische Zauber</a>
+      <a href="#" class="nav-btn btn btn-light btn-lg btn-block">Character Daten</a>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-dark bg-red">
+    <h1 class="h1 text-white" href="#">Shadowassist - {{ title }}</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon display-4"></span>
+    </button>
+  </nav>
+
+</div>
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

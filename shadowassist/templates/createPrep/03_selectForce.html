@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<a href="{{ url_for('createPrepSelectTrigger',
+                     spell_id=spell_id,
+                     container=container,
+                     _external=true) }}"
+   class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Zurück</a>
+<h1 class="font-weight-bold text-white ml-5" style="display: inline-block">Kraftstufe Auswählen</h1>
+
+<h2 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}</h2>
+
+<table class="table text-white table-borderless table-hover table-striped force-table">
+  <thead class="thead-light">
+    <th>KS</th>
+    <th>~Erfolge</th>
+    <th>~Widerstand</th>
+    <th>~Wirksamkeit</th>
+    <th>~Stärke</th>
+    <th>Entzug</th>
+    <th>~Entzug</th>
+  </thead>
+{% for n in range(14) %}
+  {% set force = n +1 %}
+  {% if force < 8 %}
+    {% set success = force %}
+  {% else %}
+    {% set success = 8 %}
+  {% endif %}
+  {% set resistance = (force / 3) | round %}
+  {% set drain = force + spell.drain %}
+  {% if drain < 2 %}{% set drain = 2 %}{% endif %}
+  {% set drainresis = (13 / 3) | round %}
+  {% set damage = drain - drainresis %}
+  {% if damage < 0 %}{% set damage = 0 %}{% endif %}
+  <tr>
+    <td>
+<a href="{{ url_for('createPrepSelectPotency',
+                    spell_id=spell.id,
+                    container=container,
+                    trigger=trigger,
+                    force=force,
+                    _external=true) }}"
+   class="btn btn-lg prep-btn {% if n > 7 %}btn-danger{% else %}btn-light{% endif %}">{{ n + 1}}</a>
+    </td>
+    <td>{{ success }}</td>
+    <td>{{ resistance }}</td>
+    <td>{{ success - resistance }}</td>
+    <td class="text-warning">{{ success + (success - resistance) }}</td>
+    <td>{{ drain }}</td>
+    <td>{{ damage }}</td>
+   </tr>
+{% endfor %}
+</table>
+
+{% endblock content %}

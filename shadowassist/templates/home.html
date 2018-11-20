@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="overlay">
+  <div class="overlay-card">
+    <div id="overPrep" class="card" style="width: 35rem;">
+      <div class="card-header">
+        <span id="overPrep" class="name">Panzerung</span>
+        <span id="overPrep" class="badge badge-primary">0</span></div>
+      <div class="card-body">
+        <table class="table table-borderless">
+          <thead>
+            <th>Kraftstufe</th>
+            <th>Wirksamkeit</th>
+            <th>Bonus</th>
+          </thead>
+        <tr>
+          <td id="overPrep" class="force">8</td>
+          <td id="overPrep" class="potency">3</td>
+          <td id="overPrep" class="bonus">2</td>
+        </tr>
+        </table>
+        <a class="card-link">
+          <span class="font-weight-bold">Herzstück:</span>
+          <span id="overPrep" class="cont">Trank</span>
+        </a>
+        <a class="card-link">
+          <span class="font-weight-bold">Auslöser:</span>
+          <span id="overPrep" class="trigger">Berührung</span>
+        </a>
+        <div id="overPrep" class="state" style="display: none">22</div>
+        <div id="overPrep" class="id" style="display: none">22</div>
+      </div>
+  </div>
+  <a name="prepActivate" class="btn btn-lg btn-dark">Aktivieren</a>
+  <a name="prepTake" class="btn btn-lg card-active">Mitnehmen</a>
+  <a name="prepStow" class="btn btn-lg btn-secondary">Verstauen</a>
+  <a name="prepDelete" class="btn btn-lg btn-danger text-white">Entsorgen</a>
+  </div>
+</div>
+
+<a href="{{ url_for('createPrepSelectSpell', _external=true) }}" class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Herstellen</a>
+
+<div class="card-deck mb-4">
+  {%- for prep in preps %}
+      {%- set prepInfo = {'name': 'Unknown'} %}
+      {%- for spell in spells %}
+        {%- if spell.id == prep.spell_id %}
+          {% if prepInfo.update({ 'name': spell.name }) %}{% endif %}
+        {%- endif %}
+      {%- endfor %}
+      {% if prep.state == 0 %}
+        {% set card_attr = "bg-dark text-muted" %}
+      {% elif prep.state == 1 %}
+        {% set card_attr = "bg-secondary text-white" %}
+      {% elif prep.state == 2 %}
+        {% set card_attr = "card-active" %}
+      {% endif %}
+      <div id="{{ prep.id }}" class="card {{ card_attr }}" style="width: 25rem;">
+        <div class="card-header" id="{{ prep.id }}">
+          <span id="{{ prep.id }}" class="name">{{ prepInfo.name }}</span>
+          <span id="{{ prep.id }}" class="badge badge-light">{{ prep.force + prep.potency + prep.bonus }}</span>
+        </div>
+        <div class="card-body">
+          <table class="table table-borderless">
+            <thead>
+              <th id="{{ prep.id }}">Kraftstufe</th>
+              <th id="{{ prep.id }}">Wirksamkeit</th>
+              <th id="{{ prep.id }}">Bonus</th>
+            </thead>
+          <tr>
+            <td id="{{ prep.id }}" class="force">{{ prep.force }}</td>
+            <td id="{{ prep.id }}" class="potency">{{ prep.potency }}</td>
+            <td id="{{ prep.id }}" class="bonus">{{ prep.bonus }}</td>
+          </tr>
+          </table>
+          <a id="{{ prep.id }}" class="card-link">
+            <span id="{{ prep.id }}" class="font-weight-bold">Herzstück:</span>
+            <span id="{{ prep.id }}" class="cont">{{ prep.container }}</span>
+          </a>
+          <a id="{{ prep.id }}" class="card-link">
+            <span id="{{ prep.id }}" class="font-weight-bold">Auslöser:</span>
+            <span id="{{ prep.id }}" class="trigger">{{ prep.trigger }}</span>
+          </a>
+          <div id="{{ prep.id }}" class="state" style="display: none">{{ prep.state }}</div>
+          <div id="{{ prep.id }}" class="id" style="display: none">{{ prep.id }}</div>
+        </div>
+      </div>
+  {%- endfor %}
+  </div>
+{% endblock content %}
