@@ -32,14 +32,12 @@
         <div id="overPrep" class="id" style="display: none">22</div>
       </div>
   </div>
-  <a name="prepActivate" class="btn btn-lg btn-dark">Aktivieren</a>
-  <a name="prepTake" class="btn btn-lg card-active">Mitnehmen</a>
-  <a name="prepStow" class="btn btn-lg btn-secondary">Verstauen</a>
-  <a name="prepDelete" class="btn btn-lg btn-danger text-white">Entsorgen</a>
+  <a name="prepActivate" class="btn btn-dark text-info"><i class="fas fa-magic"></i></a>
+  <a name="prepTake" class="btn card-active"><i class="fas fa-box-open"></i></a>
+  <a name="prepStow" class="btn btn-secondary"><i class="fas fa-box"></i></a>
+  <a name="prepDelete" class="btn btn-danger text-white"><i class="fas fa-trash"></i></a>
   </div>
 </div>
-
-<a href="{{ url_for('createPrepSelectSpell', _external=true) }}" class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Herstellen</a>
 
 <div class="card-deck mb-4">
   {%- for prep in preps %}

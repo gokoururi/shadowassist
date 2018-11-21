@@ -9,8 +9,18 @@ function onLoad() {
     $('a[name=prepStow]').on('click touch', prepStow);
     $('a[name=prepTake]').on('click touch', prepTake);
     $('a[name=prepDelete]').on('click touch', prepDelete);
+    $('a.fa-bars').on('click touch', openMenue);
+    $('.saMenueOverlay').on('click touch', closeMenue);
 }
 
+function openMenue() {
+  $('.saMenue').css("left", "0");
+  $('.saMenueOverlay').css("display", "block");
+}
+function closeMenue() {
+  $('.saMenue').css("left", "-500px");
+  $('.saMenueOverlay').css("display", "none");
+}
 function prepTake() {prepChange(2);}
 function prepStow() {prepChange(1);}
 function prepActivate() {prepChange(0);}
@@ -18,7 +28,7 @@ function prepActivate() {prepChange(0);}
 function prepChange(state) {
   var prepId = $('#overPrep.id').text()
   $.getJSON(
-    $SCRIPT_ROOT + '/prepChangeState/' + prepId + '/' + state, function(jqXHR) {
+    $SCRIPT_ROOT + '/prepChange/state/' + prepId + '/' + state, function(jqXHR) {
       location.reload()
     }
   )
@@ -27,7 +37,7 @@ function prepChange(state) {
 function prepDelete() {
   var prepId = $('#overPrep.id').text()
   $.getJSON(
-    $SCRIPT_ROOT + '/prepDelete/' + prepId, function(jqXHR) {
+    $SCRIPT_ROOT + '/prepChange/delete/' + prepId, function(jqXHR) {
       location.reload()
     }
   )

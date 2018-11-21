@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<a href="{{ url_for('home', _external=true) }}" class="btn prep-btn btn-lg btn-light mb-5 font-weight-bold">Zurück</a>
-<h1 class="font-weight-bold text-white ml-5" style="display: inline-block">Zauber auswählen</h1>
+<h1 class="font-weight-bold text-white" style="display: inline-block">Zauber auswählen</h1>
 
 {% for spellType in spellTypes %}
 <h2 class="mt-5 font-weight-bold text-white">{{ spellType }}</h2>

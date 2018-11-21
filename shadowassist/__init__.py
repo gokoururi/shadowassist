@@ -2,11 +2,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os.path
 
-dbPath = 'data/shadowassist.db'
+dbPath = '/opt/data/shadowassist.db'
 app = Flask(__name__)
 app.config['APPLICATION_ROOT'] = '/shadowassist'
 app.config['SECRET_KEY'] = '28302703de0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../' + dbPath
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + dbPath
 db = SQLAlchemy(app)
 
 from shadowassist import routes
