@@ -1,0 +1,309 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div>
+
+  <div style="text-align: center;"><h1 class="text-white mb-3">Prof. Dr. Anual Morris</h1></div>
+
+  <div class="saFlex">
+
+    <div class="saStats">
+
+     <div style="font-size: 2vh;">
+       <table class="table table-hover table-light text-dark">
+         <thead class="thead-dark">
+           <tr>
+             <th colspan="2">Körperliche Attribute</th>
+           </tr>
+         </thead>
+         <tbody style="text-align: left">
+           <tr>
+             <td>Konsitutution</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Geschicklichkeit</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Reaktion</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Stärke</td>
+             <td>2</td>
+           </tr>
+           <tr class="table-secondary">
+             <td>Limit</td>
+             <td>2</td>
+           </tr>
+         </tbody>
+       </table>
+       <!--
+        <div>Körperliche Attribute</div>
+        <div>
+          <div>Konstitution</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Geschicklichkeit</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Reaktion</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Stärke</div>
+          <div>2</div>
+        </div>
+        <div id="saLast">
+          <div>Limit</div>
+          <div>2</div>
+        </div>
+        -->
+      </div>
+     <div style="font-size: 2vh;">
+       <table class="table table-hover table-light text-dark">
+         <thead class="thead-dark">
+           <tr>
+             <th colspan="2">Geistige Attribute</th>
+           </tr>
+         </thead>
+         <tbody style="text-align: left">
+           <tr>
+             <td>Charisma</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Intuition</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Intuition</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Willenskraft</td>
+             <td>2</td>
+           </tr>
+           <tr class="table-secondary">
+             <td>Limit</td>
+             <td>2</td>
+           </tr>
+         </tbody>
+       </table>
+       <!--
+        <div>Geistige Attribute</div>
+        <div>
+          <div>Charisma</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Intuition</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Reaktion</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Logik</div>
+          <div>2</div>
+        </div>
+        <div id="saLast">
+          <div>Limit</div>
+          <div>2</div>
+        </div>
+        -->
+      </div>
+     <div style="font-size: 2vh;">
+       <table class="table table-hover table-light text-dark">
+         <thead class="thead-dark">
+           <tr>
+             <th colspan="2">Spezial Attribute</th>
+           </tr>
+         </thead>
+         <tbody style="text-align: left">
+           <tr>
+             <td>Edge</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Aktuelles Edge</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Essenz</td>
+             <td>2</td>
+           </tr>
+           <tr>
+             <td>Magie</td>
+             <td>2</td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+       <!--
+        <div>Spezial Attribute</div>
+        <div>
+          <div>Edge</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Aktuelles Edge</div>
+          <div>2</div>
+        </div>
+        <div>
+          <div>Essenz</div>
+          <div>3</div>
+        </div>
+        <div>
+          <div>Magie</div>
+          <div>1</div>
+        </div>
+      </div>
+        -->
+     <div style="font-size: 2vh;">
+       <table class="table table-hover table-light text-dark">
+         <thead class="thead-dark">
+           <tr>
+             <th colspan="2">Initiative</th>
+           </tr>
+         </thead>
+         <tbody style="text-align: left">
+           <tr>
+             <td>Initiative</td>
+             <td>6 + 1w6</td>
+           </tr>
+           <tr>
+             <td>Astr. Initiative</td>
+             <td>6 + 3w6</td>
+           </tr>
+           <tr>
+             <td>Matrix Initi. AR</td>
+             <td>6 + 3w6</td>
+           </tr>
+           <tr>
+             <td>Matrix Initi. Kalt</td>
+             <td>6 + 3w6</td>
+           </tr>
+           <tr>
+             <td>Matrix Initi. Heiß</td>
+             <td>6 + 3w6</td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+       <!--
+        <div>Initiative</div>
+        <div>
+          <div>Initiative:</div>
+          <div>6 + 1w6</div>
+        </div>
+        <div>
+          <div>Ast. Initiative:</div>
+          <div>6 + 3w6</div>
+        </div>
+      </div>
+        -->
+
+    </div>
+    <div class="saStatsImage"><img src="{{ url_for('static', filename='morris.PNG', _external=true) }}" /></div>
+
+  </div>
+
+  <div style="display: flex; flex-flow: wrap; font-size: 1.5vh;">
+    <div style="margin: 10px; flex-grow: 1;">
+      <table class="table table-hover table-light">
+        <thead class="thead-dark">
+          <tr>
+            <th colspan="5">Fertigkeiten</th>
+          </tr>
+          <tr>
+            <th>Fertigkeit</th>
+            <th>Attribut</th>
+            <th>Spezialisierung</th>
+            <th>Stufe</th>
+            <th>Pool</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Alchemie</td>
+          <td>Magie</td>
+          <td>Berührung</td>
+          <td>8</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Herbeirufen</td>
+          <td>Magie</td>
+          <td>-</td>
+          <td>6</td>
+          <td>13</td>
+        </tr>
+        <tr>
+          <td>Spruchzauberei</td>
+          <td>Magie</td>
+          <td>-</td>
+          <td>6</td>
+          <td>13</td>
+        </tr>
+        <tr>
+          <td>Arkana</td>
+          <td>Logik</td>
+          <td>-</td>
+          <td>5</td>
+          <td>8</td>
+        </tr>
+      </table>
+    </div>
+    <div style="margin: 10px; flex-grow: 1;">
+      <table class="table table-hover table-light">
+        <thead class="thead-dark">
+          <tr>
+            <th colspan="5">Fertigkeiten</th>
+          </tr>
+          <tr>
+            <th>Fertigkeit</th>
+            <th>Attribut</th>
+            <th>Spezialisierung</th>
+            <th>Stufe</th>
+            <th>Pool</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>Alchemie</td>
+          <td>Magie</td>
+          <td>Berührung</td>
+          <td>8</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Herbeirufen</td>
+          <td>Magie</td>
+          <td>-</td>
+          <td>6</td>
+          <td>13</td>
+        </tr>
+        <tr>
+          <td>Spruchzauberei</td>
+          <td>Magie</td>
+          <td>-</td>
+          <td>6</td>
+          <td>13</td>
+        </tr>
+        <tr>
+          <td>Arkana</td>
+          <td>Logik</td>
+          <td>-</td>
+          <td>5</td>
+          <td>8</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+{% endblock content %}

@@ -2,9 +2,24 @@ from flask import render_template, url_for, flash, redirect, request, jsonify
 from shadowassist import app, db
 from shadowassist.models import *
 
+@app.route("/character")
+def character():
+    link = [
+        {
+            'url': '#',
+            'icon': 'bars',
+        },
+        {
+            'url': '#',
+            'icon': 'pencil-alt',
+        },
+    ]
+    return render_template('character.html', **locals(), title="Character Sheet")
+
+
 @app.route("/")
-@app.route("/home")
-def home():
+@app.route("/preps")
+def preps():
     spells = Spell.query.all()
     preps = Prep.query.order_by(Prep.state.desc(), Prep.id.asc()).all()
     link = [
@@ -17,7 +32,7 @@ def home():
             'icon': 'plus-circle',
         },
     ]
-    return render_template('home.html', **locals(), title="Präparate")
+    return render_template('preps.html', **locals(), title="Präparate")
 
 @app.route("/prepChange/state/<int:prep_id>/<int:state>")
 def prepChangeState(prep_id, state):
@@ -49,7 +64,7 @@ def createPrepSelectSpell():
             'icon': 'bars',
         },
         {
-            'url': url_for('home', _external=True),
+            'url': url_for('preps', _external=True),
             'icon': 'times',
         },
     ]
@@ -66,7 +81,7 @@ def createPrepSelectContainer(spell_id):
             'icon': 'chevron-left',
         },
         {
-            'url': url_for('home', _external=True),
+            'url': url_for('preps', _external=True),
             'icon': 'times',
         },
     ]
@@ -82,7 +97,7 @@ def createPrepSelectTrigger(spell_id, container):
             'icon': 'chevron-left',
         },
         {
-            'url': url_for('home', _external=True),
+            'url': url_for('preps', _external=True),
             'icon': 'times',
         },
     ]
@@ -102,7 +117,7 @@ def createPrepSelectForce(spell_id, container, trigger):
             'icon': 'chevron-left',
         },
         {
-            'url': url_for('home', _external=True),
+            'url': url_for('preps', _external=True),
             'icon': 'times',
         },
     ]
@@ -123,7 +138,7 @@ def createPrepSelectPotency(spell_id, container, trigger, force):
             'icon': 'chevron-left',
         },
         {
-            'url': url_for('home', _external=True),
+            'url': url_for('preps', _external=True),
             'icon': 'times',
         },
     ]
@@ -145,7 +160,7 @@ def createPrepResistDrain(spell_id, container, trigger, force, potency):
             'icon': 'chevron-left',
         },
         {
-            'url': url_for('home', _external=True),
+            'url': url_for('preps', _external=True),
             'icon': 'times',
         },
     ]
@@ -165,4 +180,4 @@ def createPrepCreate(spell_id, container, trigger, force, potency):
                    state=1)
     db.session.add(newPrep)
     db.session.commit()
-    return redirect(url_for('home', _external=True))
+    return redirect(url_for('preps', _external=True))

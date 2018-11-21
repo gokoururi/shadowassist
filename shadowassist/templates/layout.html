@@ -31,8 +31,8 @@
 
     <div class="saMenue">
       <ul>
-        <li><i href="#" class="fas fa-id-card"></i> <a>Character Daten</a></li>
-        <li><i href="#" class="fas fa-flask"></i> <a>Präparate</a></li>
+        <li><i class="fas fa-id-card"></i> <a href="{{ url_for('character', _external='true') }}">Character Daten</a></li>
+        <li><i class="fas fa-flask"></i> <a href="{{ url_for('preps', _external='true') }}">Präparate</a></li>
         <li><i href="#" class="fas fa-fire"></i> <a>Zauber</a></li>
         <li><i href="#" class="fas fa-ghost"></i> <a>Geister</a></li>
       </ul>
