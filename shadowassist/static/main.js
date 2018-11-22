@@ -11,6 +11,34 @@ function onLoad() {
     $('a[name=prepDelete]').on('click touch', prepDelete);
     $('a.fa-bars').on('click touch', openMenue);
     $('.saMenueOverlay').on('click touch', closeMenue);
+    $('#stunUp').on('click touch', increaseStun);
+    $('#stunDown').on('click touch', decreaseStun);
+    $('#physUp').on('click touch', increasePhys);
+    $('#physDown').on('click touch', decreasePhys);
+}
+
+function increasePhys() {
+  changeDamage("physical", "increase");
+}
+
+function decreasePhys() {
+  changeDamage("physical", "decrease");
+}
+
+function increaseStun() {
+  changeDamage("stun", "increase");
+}
+
+function decreaseStun() {
+  changeDamage("stun", "decrease");
+}
+
+function changeDamage(type, action) {
+  $.getJSON(
+    $SCRIPT_ROOT + '/character/1/damage/' + type + '/' + action, function(jqXHR) {
+      location.reload()
+    }
+  )
 }
 
 function openMenue() {

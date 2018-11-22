@@ -3,14 +3,14 @@
 
 <div>
 
-  <div style="text-align: center;"><h1 class="text-white mb-3">Prof. Dr. Anual Morris</h1></div>
+  <div style="text-align: center;"><h1 class="text-white mb-3">{{ char.name }}</h1></div>
 
   <div class="saFlex">
 
     <div class="saStats">
 
-     <div style="font-size: 2vh;">
-       <table class="table table-hover table-light text-dark">
+     <div>
+       <table class="table table-hover table-striped table-light text-dark">
          <thead class="thead-dark">
            <tr>
              <th colspan="2">Körperliche Attribute</th>
@@ -19,29 +19,25 @@
          <tbody style="text-align: left">
            <tr>
              <td>Konsitutution</td>
-             <td>2</td>
+             <td>{{ char.body }}</td>
            </tr>
            <tr>
              <td>Geschicklichkeit</td>
-             <td>2</td>
+             <td>{{ char.agility }}</td>
            </tr>
            <tr>
              <td>Reaktion</td>
-             <td>2</td>
+             <td>{{ char.reaction }}</td>
            </tr>
            <tr>
              <td>Stärke</td>
-             <td>2</td>
-           </tr>
-           <tr class="table-secondary">
-             <td>Limit</td>
-             <td>2</td>
+             <td>{{ char.strength }}</td>
            </tr>
          </tbody>
        </table>
       </div>
-     <div style="font-size: 2vh;">
-       <table class="table table-hover table-light text-dark">
+     <div>
+       <table class="table table-hover table-striped table-light text-dark">
          <thead class="thead-dark">
            <tr>
              <th colspan="2">Geistige Attribute</th>
@@ -50,29 +46,48 @@
          <tbody style="text-align: left">
            <tr>
              <td>Charisma</td>
-             <td>2</td>
+             <td>{{ char.charisma }}</td>
            </tr>
            <tr>
              <td>Intuition</td>
-             <td>2</td>
+             <td>{{ char.intuition }}</td>
            </tr>
            <tr>
-             <td>Intuition</td>
-             <td>2</td>
+             <td>Logik</td>
+             <td>{{ char.logic }}</td>
            </tr>
            <tr>
              <td>Willenskraft</td>
-             <td>2</td>
-           </tr>
-           <tr class="table-secondary">
-             <td>Limit</td>
-             <td>2</td>
+             <td>{{ char.willpower }}</td>
            </tr>
          </tbody>
        </table>
       </div>
-     <div style="font-size: 2vh;">
-       <table class="table table-hover table-light text-dark">
+      <div>
+       <table class="table table-hover table-striped table-light text-dark">
+         <thead class="thead-dark">
+           <tr>
+             <th colspan="2">Limits</th>
+           </tr>
+         </thead>
+         <tbody style="text-align: left">
+           <tr>
+             <td>Physisch</td>
+             <td>{{ (((char.strength * 2) + char.body + char.reaction) / 3)|round(0, 'ceil')|int }}</td>
+           </tr>
+           <tr>
+             <td>Geistig</td>
+             <td>{{ (((char.logic * 2) + char.intuition + char.willpower) / 3)|round(0, 'ceil')|int }}</td>
+           </tr>
+           <tr>
+             <td>Sozial</td>
+             <td>{{ (((char.charisma * 2) + char.willpower + char.essence) / 3)|round(0,'ceil')|int }}</td>
+           </tr>
+         </tbody>
+       </table>
+      </div>
+     <div>
+       <table class="table table-hover table-striped table-light text-dark">
          <thead class="thead-dark">
            <tr>
              <th colspan="2">Spezial Attribute</th>
@@ -81,25 +96,25 @@
          <tbody style="text-align: left">
            <tr>
              <td>Edge</td>
-             <td>2</td>
+             <td>{{ char.edge }}</td>
            </tr>
            <tr>
              <td>Aktuelles Edge</td>
-             <td>2</td>
+             <td>{{ char.currentEdge }}</td>
            </tr>
            <tr>
              <td>Essenz</td>
-             <td>2</td>
+             <td>{{ char.essence }}</td>
            </tr>
            <tr>
              <td>Magie</td>
-             <td>2</td>
+             <td>{{ char.magic }}</td>
            </tr>
          </tbody>
        </table>
       </div>
-     <div style="font-size: 2vh;">
-       <table class="table table-hover table-light text-dark">
+     <div>
+       <table class="table table-hover table-striped table-light text-dark">
          <thead class="thead-dark">
            <tr>
              <th colspan="2">Initiative</th>
@@ -116,15 +131,15 @@
            </tr>
            <tr>
              <td>Matrix Initi. AR</td>
-             <td>6 + 3w6</td>
+             <td>6 + 1w6</td>
            </tr>
            <tr>
              <td>Matrix Initi. Kalt</td>
-             <td>6 + 3w6</td>
+             <td>3 + DV + 3w6</td>
            </tr>
            <tr>
              <td>Matrix Initi. Heiß</td>
-             <td>6 + 3w6</td>
+             <td>3 + DV + 4w6</td>
            </tr>
          </tbody>
        </table>
@@ -134,9 +149,9 @@
 
   </div>
 
-  <div style="display: flex; flex-flow: wrap; font-size: 1.5vh;">
+  <div style="display: flex; flex-flow: wrap; font-size: 0.8em">
     <div style="margin: 10px; flex-grow: 1;">
-      <table class="table table-hover table-light">
+      <table class="table table-striped table-hover table-light">
         <thead class="thead-dark">
           <tr>
             <th colspan="5">Fertigkeiten</th>
@@ -152,7 +167,7 @@
         <tr>
           <td>Alchemie</td>
           <td>Magie</td>
-          <td>Berührung</td>
+          <td><a class="badge badge-secondary text-white">Berührung</a></td>
           <td>8</td>
           <td>15</td>
         </tr>
@@ -176,11 +191,32 @@
           <td>-</td>
           <td>5</td>
           <td>8</td>
+        </tr>
+        <tr>
+          <td>Chemie</td>
+          <td>Logik</td>
+          <td>-</td>
+          <td>4</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Wahrnehmung</td>
+          <td>Intuition</td>
+          <td>-</td>
+          <td>4</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Überreden</td>
+          <td>Charisma</td>
+          <td>-</td>
+          <td>2</td>
+          <td>9</td>
         </tr>
       </table>
     </div>
     <div style="margin: 10px; flex-grow: 1;">
-      <table class="table table-hover table-light">
+      <table class="table table-hover table-striped table-light">
         <thead class="thead-dark">
           <tr>
             <th colspan="5">Fertigkeiten</th>
@@ -194,32 +230,53 @@
           </tr>
         </thead>
         <tr>
-          <td>Alchemie</td>
-          <td>Magie</td>
-          <td>Berührung</td>
-          <td>8</td>
-          <td>15</td>
-        </tr>
-        <tr>
-          <td>Herbeirufen</td>
-          <td>Magie</td>
+          <td>Askennen</td>
+          <td>Intuition</td>
           <td>-</td>
-          <td>6</td>
-          <td>13</td>
+          <td>1</td>
+          <td>4</td>
         </tr>
         <tr>
-          <td>Spruchzauberei</td>
-          <td>Magie</td>
+          <td>Bodenfahrzeuge</td>
+          <td>Reaktion</td>
           <td>-</td>
-          <td>6</td>
-          <td>13</td>
+          <td>1</td>
+          <td>4</td>
         </tr>
         <tr>
-          <td>Arkana</td>
+          <td>Erste Hilfe</td>
           <td>Logik</td>
           <td>-</td>
-          <td>5</td>
+          <td>1</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>Klingenwaffen</td>
+          <td>Gesch.</td>
+          <td>-</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Pistolen</td>
+          <td>Gesch.</td>
+          <td>-</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Ritualzauberei</td>
+          <td>Magie</td>
+          <td>-</td>
+          <td>1</td>
           <td>8</td>
+        </tr>
+        <tr>
+          <td>Verkleiden</td>
+          <td>Intuition</td>
+          <td>-</td>
+          <td>1</td>
+          <td>4</td>
         </tr>
       </table>
     </div>

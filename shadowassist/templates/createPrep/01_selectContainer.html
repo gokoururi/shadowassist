@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h1 class="font-weight-bold text-white mb-5"
-    style="display: inline-block">Herzstück auswählen</h1>
+<h5 class="font-weight-bold text-white mb-5"
+    style="display: inline-block">Herzstück auswählen</h5>
 
-<h2 class="font-weight-bold text-white">{{ spell.name }}</h2>
+<h6 class="font-weight-bold text-white">{{ spell.name }}</h6>
 {% for container in ['Trank', 'Ring', 'Schraube', 'Mutter']%}
 <a href="{{ url_for('createPrepSelectTrigger', spell_id=spell.id, container=container, _external=true) }}"
    class="btn btn-lg prep-btn btn-block btn-light">{{ container }}</a>

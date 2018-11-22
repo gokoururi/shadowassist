@@ -3,7 +3,7 @@
 
 <div class="overlay">
   <div class="overlay-card">
-    <div id="overPrep" class="card" style="width: 35rem;">
+    <div id="overPrep" class="card">
       <div class="card-header">
         <span id="overPrep" class="name">Panzerung</span>
         <span id="overPrep" class="badge badge-primary">0</span></div>
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div class="card-deck mb-4">
+<div class="muh">
   {%- for prep in preps %}
       {%- set prepInfo = {'name': 'Unknown'} %}
       {%- for spell in spells %}
@@ -54,16 +54,16 @@
       {% elif prep.state == 2 %}
         {% set card_attr = "card-active" %}
       {% endif %}
-      <div id="{{ prep.id }}" class="card {{ card_attr }}" style="width: 25rem;">
+      <div id="{{ prep.id }}" class="card {{ card_attr }}">
         <div class="card-header" id="{{ prep.id }}">
           <span id="{{ prep.id }}" class="name">{{ prepInfo.name }}</span>
           <span id="{{ prep.id }}" class="badge badge-light">{{ prep.force + prep.potency + prep.bonus }}</span>
         </div>
-        <div class="card-body">
+        <div class="card-body" id="{{ prep.id }}">
           <table class="table table-borderless">
             <thead>
-              <th id="{{ prep.id }}">Kraftstufe</th>
-              <th id="{{ prep.id }}">Wirksamkeit</th>
+              <th id="{{ prep.id }}">KS</th>
+              <th id="{{ prep.id }}">Wirk.</th>
               <th id="{{ prep.id }}">Bonus</th>
             </thead>
           <tr>
@@ -72,14 +72,14 @@
             <td id="{{ prep.id }}" class="bonus">{{ prep.bonus }}</td>
           </tr>
           </table>
-          <a id="{{ prep.id }}" class="card-link">
+          <div id="{{ prep.id }}">
             <span id="{{ prep.id }}" class="font-weight-bold">Herzstück:</span>
             <span id="{{ prep.id }}" class="cont">{{ prep.container }}</span>
-          </a>
-          <a id="{{ prep.id }}" class="card-link">
+          </div>
+          <div id="{{ prep.id }}">
             <span id="{{ prep.id }}" class="font-weight-bold">Auslöser:</span>
             <span id="{{ prep.id }}" class="trigger">{{ prep.trigger }}</span>
-          </a>
+          </div>
           <div id="{{ prep.id }}" class="state" style="display: none">{{ prep.state }}</div>
           <div id="{{ prep.id }}" class="id" style="display: none">{{ prep.id }}</div>
         </div>

@@ -1,19 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h1 class="font-weight-bold text-white mb-5" style="display: inline-block">Kraftstufe Auswählen</h1>
+<h5 class="font-weight-bold text-white mb-5" style="display: inline-block">Kraftstufe Auswählen</h5>
 
-<h2 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}</h2>
+<h6 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}</h6>
 
-<table class="table text-white table-borderless table-hover table-striped force-table">
-  <thead class="thead-light">
+<table class="table table-dark table-borderless table-hover table-striped force-table">
+  <thead class="thead-dark">
     <th>KS</th>
-    <th>~Erfolge</th>
-    <th>~Widerstand</th>
-    <th>~Wirksamkeit</th>
-    <th>~Stärke</th>
-    <th>Entzug</th>
-    <th>~Entzug</th>
+    <th>~E</th>
+    <th>~Wid</th>
+    <th>~Wirk</th>
+    <th>~S</th>
+    <th>Ent</th>
+    <th>~Ent</th>
   </thead>
 {% for n in range(14) %}
   {% set force = n +1 %}
@@ -36,7 +36,7 @@
                     trigger=trigger,
                     force=force,
                     _external=true) }}"
-   class="btn btn-lg prep-btn {% if n > 7 %}btn-danger{% else %}btn-light{% endif %}">{{ n + 1}}</a>
+   class="btn {% if n > 7 %}btn-danger{% else %}btn-secondary{% endif %}">{{ n + 1}}</a>
     </td>
     <td>{{ success }}</td>
     <td>{{ resistance }}</td>

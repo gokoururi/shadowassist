@@ -14,6 +14,10 @@ html, body {
   background: #f4d370;
 }
 
+.container {
+  overflow: hidden;
+}
+
 .content {
   margin-top: 7vh;
   padding: 20px 60px 20px 60px;
@@ -26,27 +30,52 @@ html, body {
 
 .nav-btn,
 .prep-btn {
-  font-size: 30px;
-  padding: 30px 30px;
 }
 
 .table {
   text-align: center;
 }
 
+.muh {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .card {
+  flex-basis: content;
+  margin: 5px;
+  width: 150px;
+  height: 105px;
+  align-self: flex-start;
+  /*
   margin-bottom: 15px !important;
   min-width: 25rem;
   max-width: 25rem;
   */
 }
 
+.overlay .card {
+  width: auto;
+  height: auto;
+}
+
 .card-header {
-  font-size: 24px;
   font-weight: bold;
+  font-size: 0.6em;
+  padding: 5px 10px;
+}
+
+.card-body {
+  font-size: 0.5em;
+  padding: 5px 10px;
 }
 
 .card .btn {
+}
+
+.card table th,
+.card table td {
+  padding: 0;
 }
 
 .saMenueOverlay,
@@ -69,30 +98,46 @@ html, body {
 }
 
 .overlay-card {
-  margin-top: 170px;
+  margin-top: 70px;
+  text-align: center;
   display: inline-block;
 }
 
 .overlay .card-header {
-  font-size: 30px;
 }
 
 .overlay .card {
-  min-width: 800px;
-  max-width: 800px;
 }
 
 .overlay .btn {
-  padding: 40px 40px;
+  padding: 10px 10px;
 }
 
+.force-table {
+  font-size: 2vw;
+}
+.force-table th {
+  padding: 5px 5px;
+}
 .force-table td {
+  padding: 5px 5px;
   vertical-align: middle;
-  font-size: 24px;
 }
 
 .force-table .btn {
-  min-width: 100px;
+  font-size: 2vw;
+  min-width: 60px;
+}
+@media screen and (min-width: 1200px) {
+  .force-table {
+     font-size: 18px;
+  }
+  .force-table .btn {
+     font-size: 18px;
+  }
+}
+
+.force-table .btn {
 }
 
 /* saMenue */
@@ -116,7 +161,6 @@ html, body {
 }
 .saMenue li {
   padding: 20px 40px 20px 20px;
-  font-size: 2vh;
 }
 
 .saMenue li:hover {
@@ -141,9 +185,9 @@ html, body {
   left: 0;
   right: 0;
   z-index: 5;
-  font-size: 2vh;
   color: #FFF;
-  padding: 1.5vh 40px;
+  font-size: 2vh;
+  padding: 1.5vh 20px;
   background: #000;
   border-bottom: 5px solid #4d4d4d;
 }
@@ -189,12 +233,16 @@ a.saButton:active {
 .saStats {
   flex-grow: 4;
   flex-shrink: 2;
-  flex-basis: 50vh;
+  flex-basis: 100vh;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
   color: #FFF;
-  font-size: 2vh;
+  border-top: 3px solid #4d4d4d;
+  border-bottom: 3px solid #4d4d4d;
+  padding: 10px 0;
+  background: #292929;
+  margin: 5px 0;
 }
 
 .saStats > div {
@@ -249,16 +297,18 @@ a.saButton:active {
 .saStatsImage {
   text-align: center;
   flex-grow: 1;
+  border-top: 3px solid #4d4d4d;
+  border-bottom: 3px solid #4d4d4d;
+  padding: 10px 10px;
+  background: #292929;
+  margin: 5px 0;
 }
 
 .saStatsImage img {
   flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 100px;
-  border-top: 5px solid #000;
-  border-bottom: 5px solid #000;
-  border-radius: 10px;
-  box-shadow: 2px 2px 10px;
+  flex-basis:100px;
+  min-width: 100px;
+  max-width: 200px;
   }
 
 #saLast {
@@ -269,4 +319,48 @@ a.saButton:active {
   border-right: 0;
   border-bottom: 0;
   background: none;
+}
+
+/* saDamageTrack */
+
+.saDamageTrack {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center
+}
+
+.saDamageTrackTitle {
+  margin-bottom: 10px;
+}
+
+.saDamageTrackBody {
+  display: flex;
+  flex-wrap: wrap;
+  width: 170px;
+}
+
+.saDamageTrackBox {
+  width: 50px;
+  height: 50px;
+  padding: 2px 5px;
+  border: 2px solid #FFF;
+  border-radius: 3px;
+  margin: 3px;
+  color: #666666;
+  background: #FFF;
+}
+
+.saDamageTrackBox:hover {
+  border: 2px solid #d00000;
+}
+
+.saDamageTrackBoxOverflow {
+  background: #bababa;
+  border: 2px solid #bababa;
+}
+.saDamageTrackBoxDead {
+  background: #feb3b3;
+  border: 2px solid #feb3b3;
 }

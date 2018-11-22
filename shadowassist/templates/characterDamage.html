@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div>
+
+  <div class="saFlex text-white">
+
+    <div class="saDamageTrack">
+      <div class="saDamageTrackTitle"">Physischer Schaden ({{ charPhys }})</div>
+      <div class="saDamageTrackBody">
+      {% for n in range(charPhys) %}
+        <div class="saDamageTrackBox">
+          {% if char.physDamage >= n + 1 %}
+          <i class="fas fa-times"></i>
+          {% endif %}
+        </div>
+      {% endfor %}
+      {% for n in range(char.body) %}
+        <div class="saDamageTrackBox saDamageTrackBoxOverflow">
+          {% if char.physDamage >= charPhys +  n + 1 %}
+          <i class="fas fa-times"></i>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <div class="saDamageTrackBox saDamageTrackBoxDead">
+          {% if char.physDamage >= charPhys +  char.body + 1 %}
+          <i class="fas fa-times"></i>
+          {% endif %}
+      </div>
+      </div>
+      <div class="mt-2">
+        <a id="physDown" class="btn btn-primary">-1</a>
+        <a id="physUp" class="btn btn-primary">+1</a>
+      </div>
+    </div>
+
+    <div class="saDamageTrack">
+      <div class="saDamageTrackTitle">Geistiger Schaden ({{ charStun }})</div>
+      <div class="saDamageTrackBody">
+      {% for n in range(charStun) %}
+        <div class="saDamageTrackBox bg-light text-dark">
+          {% if char.stunDamage >= n + 1 %}
+          <i class="fas fa-times"></i>
+          {% endif %}
+        </div>
+      {% endfor %}
+      </div>
+      <div class="mt-2">
+        <a id="stunDown" class="btn btn-primary">-1</a>
+        <a id="stunUp" class="btn btn-primary">+1</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock content %}

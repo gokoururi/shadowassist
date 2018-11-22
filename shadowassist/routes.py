@@ -1,9 +1,11 @@
 from flask import render_template, url_for, flash, redirect, request, jsonify
+import math
 from shadowassist import app, db
 from shadowassist.models import *
 
 @app.route("/character")
-def character():
+@app.route("/character/<int:char_id>")
+def character(char_id=1):
     link = [
         {
             'url': '#',
@@ -14,8 +16,57 @@ def character():
             'icon': 'pencil-alt',
         },
     ]
+    char = Character.query.filter(Character.id == char_id).first()
     return render_template('character.html', **locals(), title="Character Sheet")
 
+@app.route("/character/damage")
+@app.route("/character/<int:char_id>/damage")
+def characterDamage(char_id=1):
+    link = [
+        {
+            'url': '#',
+            'icon': 'bars',
+        },
+        {
+            'url': '#',
+            'icon': '',
+        },
+    ]
+    char = Character.query.filter(Character.id == char_id).first()
+    charPhys = math.ceil((char.body/2)+8)
+    charStun = math.ceil((char.willpower/2)+8)
+    return render_template('characterDamage.html', **locals(), title="Schadens Monitor")
+
+@app.route("/character/<int:char_id>/damage/<type>/<action>")
+def characterDamageChange(char_id, type, action):
+    char = Character.query.filter(Character.id == char_id)
+    charPhys = math.ceil((char.first().body/2)+8)
+    charStun = math.ceil((char.first().willpower/2)+8)
+    if type == "physical":
+        currentDmg = char.first().physDamage
+        if action == "increase":
+            newDamage = currentDmg + 1;
+            if newDamage > charPhys + char.first().body + 1:
+                newDamage = charPhys + char.first().body + 1
+        if action == "decrease":
+            newDamage = currentDmg - 1;
+            if newDamage < 0:
+                newDamage = 0;
+        char.update({'physDamage': newDamage})
+    if type == "stun":
+        currentDmg = char.first().stunDamage
+        if action == "increase":
+            newDamage = currentDmg + 1;
+            if newDamage > charStun:
+                newDamage = charStun
+        if action == "decrease":
+            newDamage = currentDmg - 1;
+            if newDamage < 0:
+                newDamage = 0;
+        char.update({'stunDamage': newDamage})
+
+    db.session.commit()
+    return jsonify({"result": "ok"})
 
 @app.route("/")
 @app.route("/preps")

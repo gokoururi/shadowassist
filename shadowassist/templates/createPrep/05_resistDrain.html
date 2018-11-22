@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1 class="font-weight-bold text-white mb-5" style="display: block">Entzug widerstehen</h1>
+<h5 class="font-weight-bold text-white mb-5" style="display: block">Entzug widerstehen</h5>
 
-<h2 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}, {{ force }}, {{ potency }}</h2>
+<h6 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}, {{ force }}, {{ potency }}</h6>
 
-<h1 class="text-white">Entzug: {{ force + spell.drain }}</<h1></h1>>
+<h5 class="text-white">Entzug: {{ force + spell.drain }}</<h5></h5>>
 
 <a href="{{ url_for('createPrepCreate',
                      spell_id=spell_id,

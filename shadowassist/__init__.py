@@ -15,6 +15,24 @@ from shadowassist.models import *
 
 if not os.path.isfile(dbPath):
     data = [
+        Character(
+            name="Professor Dr. Anluan Morris",
+            type="pc",
+            body=2,
+            agility=2,
+            reaction=2,
+            strength=1,
+            willpower=6,
+            logic=3,
+            intuition=3,
+            charisma=7,
+            edge=2,
+            currentEdge=2,
+            magic=7,
+            essence=6,
+            physDamage=0,
+            stunDamage=0
+        ),
         Spell(name="Panzerung",                  type="Manipulationszauber", drain="-2", alchemical=True),
         Spell(name="Geckogang",                  type="Manipulationszauber", drain="-3", alchemical=True),
         Spell(name="Entzünden",                  type="Manipulationszauber", drain="-1", alchemical=True),

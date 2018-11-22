@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h1 class="font-weight-bold text-white mb-5"
-    style="display: inline-block">Wirksamkeit auswählen</h1>
+<h5 class="font-weight-bold text-white mb-5"
+    style="display: inline-block">Wirksamkeit auswählen</h5>
 
-<h2 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}, {{ force }}</h2>
+<h6 class="font-weight-bold text-white">{{ spell.name }}, {{ container }}, {{ trigger }}, {{ force }}</h6>
 
-<h2 class="mt-5 font-weight-bold text-white">Erfolge bei Spruchwirkung</h2>
+<h6 class="mt-5 font-weight-bold text-white">Erfolge bei Spruchwirkung</h6>
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
 {% for n in range(force|int + 1) %}
 {% set spellcasting = n %}
-<label class="btn btn-lg prep-btn btn-light">
+<label class="btn  prep-btn btn-light">
   <input type="radio" name="spellcasting" id="option{{n}}" value="{{n}}">
   {{ spellcasting }}
   </input>
@@ -18,11 +18,11 @@
 {% endfor %}
 </div>
 
-<h2 class="mt-5 font-weight-bold text-white">Erfolge bei Objetwiderstand</h2>
+<h6 class="mt-5 font-weight-bold text-white">Erfolge bei Objetwiderstand</h6>
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
 {% for n in range(force|int + 1) %}
 {% set spellcasting = n %}
-<label class="btn btn-lg prep-btn btn-light">
+<label class="btn prep-btn btn-light">
   <input type="radio" name="resistance" id="option{{n}}" value="{{n}}">
   {{ spellcasting }}
   </input>
@@ -30,12 +30,12 @@
 {% endfor %}
 </div>
 
-<div style="display: none;" class="mt-5 text-white h1" id="spell">{{ spell.id }}</div>
-<div style="display: none;" class="mt-5 text-white h1" id="container">{{ container }}</div>
-<div style="display: none;" class="mt-5 text-white h1" id="trigger">{{ trigger }}</div>
-<div style="display: none;" class="mt-5 text-white h1" id="force">{{ force }}</div>
-<div style="display: none;" class="mt-5 text-white h1" id="success">0</div>
-<div style="display: none;" class="mb-5 text-white h1" id="resistance">0</div>
+<div style="display: none;" class="mt-5 text-white h5" id="spell">{{ spell.id }}</div>
+<div style="display: none;" class="mt-5 text-white h5" id="container">{{ container }}</div>
+<div style="display: none;" class="mt-5 text-white h5" id="trigger">{{ trigger }}</div>
+<div style="display: none;" class="mt-5 text-white h5" id="force">{{ force }}</div>
+<div style="display: none;" class="mt-5 text-white h5" id="success">0</div>
+<div style="display: none;" class="mb-5 text-white h5" id="resistance">0</div>
 
 <a id="potency"
    class="mt-5 btn btn-lg prep-btn btn-block btn-light">0</a>

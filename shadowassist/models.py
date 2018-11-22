@@ -1,5 +1,25 @@
 from shadowassist import db
 
+class Character(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(60))
+    type = db.Column(db.String(10))
+    body = db.Column(db.Integer)
+    agility = db.Column(db.Integer)
+    reaction = db.Column(db.Integer)
+    strength = db.Column(db.Integer)
+    willpower = db.Column(db.Integer)
+    logic = db.Column(db.Integer)
+    intuition = db.Column(db.Integer)
+    charisma = db.Column(db.Integer)
+    edge = db.Column(db.Integer)
+    currentEdge = db.Column(db.Integer)
+    magic = db.Column(db.Integer)
+    essence = db.Column(db.Float)
+    physDamage = db.Column(db.Integer)
+    stunDamage = db.Column(db.Integer)
+
+
 class Spell(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60))
