@@ -1,0 +1,266 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div style="margin-bottom: 10px; text-align: center; background: #292929; border-top: 3px solid #4d4d4d; border-bottom: 3px solid #4d4d4d; padding: 10px 0;">
+<h3 class="text-white mb-3">Erdgeist</h3>
+<table class="table table-light">
+  <thead class="thead-dark">
+    <tr>
+      <th>K</th>
+      <th>G</th>
+      <th>R</th>
+      <th>S</th>
+      <th>EDG</th>
+      <th>ESS</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KS+4</td>
+      <td>KS-2</td>
+      <td>KS-1</td>
+      <td>KS+4</td>
+      <td>KS/2</td>
+      <td>KS</td>
+    <tr>
+  </tbody>
+</table>
+
+<table class="table table-light">
+  <thead class="thead-dark">
+    <tr>
+      <th>C</th>
+      <th>I</th>
+      <th>L</th>
+      <th>W</th>
+      <th></th>
+      <th>M</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KS/2</td>
+      <td>KS</td>
+      <td>KS-1</td>
+      <td>KS</td>
+      <td></td>
+      <td>KS</td>
+    <tr>
+  </tbody>
+</table>
+
+<table class="table table-light">
+  <tbody>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Initiative</th>
+      <td colspan="7">(KSx2) - 1 + 2w6</td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-secondary text-warning">Astrale Initiative</th>
+      <td colspan="7">(KSx2) + 3w6</td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Fertigkeiten</th>
+      <td colspan="7">
+        <span class="badge badge-secondary">Askennen</span>
+        <span class="badge badge-secondary">Astralkampf</span>
+        <span class="badge badge-secondary">Exotische Fernkampfwaffen</span>
+        <span class="badge badge-secondary">Waffenloser Kampf</span>
+        <span class="badge badge-secondary">Warhnehmung</span>
+      </td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-secondary text-warning">Kräfte</th>
+      <td colspan="7">
+        <span class="badge badge-secondary">Astrale Gestalt</span>
+        <span class="badge badge-secondary">Bewegung</span>
+        <span class="badge badge-secondary">Bewusstsein</span>
+        <span class="badge badge-secondary">Bindung</span>
+        <span class="badge badge-primary" data-toggle="modal" data-target="#materialisierung">Materialisierung</span>
+        <span class="badge badge-secondary">Schutz</span>
+        <span class="badge badge-secondary">Suche</span>
+      </td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Zusätzliche Kräfte</th>
+      <td colspan="7">
+        <span class="badge badge-primary" data-toggle="modal" data-target="#elementarerangriff">Elementarer Angriff</span>
+        <span class="badge badge-secondary">Grauen</span>
+        <span class="badge badge-secondary">Verschleierung</span>
+        <span class="badge badge-primary" data-toggle="modal" data-target="#verschlingen">Verschlingen</span>
+        <span class="badge badge-secondary">Verwirrung</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div style="margin-bottom: 10px; text-align: center; background: #292929; border-top: 3px solid #4d4d4d; border-bottom: 3px solid #4d4d4d; padding: 10px 0;">
+<h3 class="text-white mb-3">Wassergeist</h3>
+<table class="table table-light">
+  <thead class="thead-dark">
+    <tr>
+      <th>K</th>
+      <th>G</th>
+      <th>R</th>
+      <th>S</th>
+      <th>EDG</th>
+      <th>ESS</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KS</td>
+      <td>KS+1</td>
+      <td>KS+2</td>
+      <td>KS</td>
+      <td>KS/2</td>
+      <td>KS</td>
+    <tr>
+  </tbody>
+</table>
+
+<table class="table table-light">
+  <thead class="thead-dark">
+    <tr>
+      <th>C</th>
+      <th>I</th>
+      <th>L</th>
+      <th>W</th>
+      <th></th>
+      <th>M</th>
+    <tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>KS</td>
+      <td>KS</td>
+      <td>KS</td>
+      <td>KS</td>
+      <td></td>
+      <td>KS</td>
+    <tr>
+  </tbody>
+</table>
+
+<table class="table table-light">
+  <tbody>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Initiative</th>
+      <td colspan="7">(KSx2) + 2 + 2w6</td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-secondary text-warning">Astrale Initiative</th>
+      <td colspan="7">(KSx2) + 3w6</td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Fertigkeiten</th>
+      <td colspan="7">
+        <span class="badge badge-secondary">Askennen</span>
+        <span class="badge badge-secondary">Astralkampf</span>
+        <span class="badge badge-secondary">Exotische Fernkampfwaffen</span>
+        <span class="badge badge-secondary">Waffenloser Kampf</span>
+        <span class="badge badge-secondary">Warhnehmung</span>
+      </td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-secondary text-warning">Kräfte</th>
+      <td colspan="7">
+        <span class="badge badge-secondary">Astrale Gestalt</span>
+        <span class="badge badge-secondary">Bewegung</span>
+        <span class="badge badge-secondary">Bewusstsein</span>
+        <span class="badge badge-primary" data-toggle="modal" data-target="#materialisierung">Materialisierung</span>
+        <span class="badge badge-secondary">Suche</span>
+        <span class="badge badge-secondary">Verschleierung</span>
+        <span class="badge badge-primary" data-toggle="modal" data-target="#verschlingen">Verschlingen</span>
+        <span class="badge badge-secondary">Verwirrung</span>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Zusätzliche Kräfte</th>
+      <td colspan="7">
+        <span class="badge badge-secondary">Bindung</span>
+        <span class="badge badge-primary" data-toggle="modal" data-target="#elementarerangriff">Elementarer Angriff</span>
+        <span class="badge badge-secondary">Energieaura</span>
+        <span class="badge badge-secondary">Schutz</span>
+        <span class="badge badge-secondary">Unfall</span>
+        <span class="badge badge-secondary">Wetterbeherrschung</span>
+      </td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-secondary text-warning">Schwächen</th>
+      <td colspan="7">Allergie (Feuer, Schwer)</td>
+    </tr>
+    <tr style="text-align: left">
+      <th colspan="4" class="bg-dark text-warning">Besonderheiten</th>
+      <td colspan="7">Wassergeister bewegen sich im Wasser doppelt so schnell</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="verschlingen" tabindex="-1" role="dialog" aria-labelledby="verschlingenLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="verschlingenLabel">Verschlingen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Art: P  Handlung: Komplex Reichweite: B  Dauer: Aufrechterhalten</p>
+        <p>Diese Kraft ermöglicht einem Critter, ein Opfer in sich selbst oder in das von ihm beherrschte Terrain hineinzuziehen, es zu verschlingen oder zu ersticken und ihm dadurch Schaden zuzufügen. Es handelt sich dabei um einen Nahkampfangriff. Ist der Critter erfolgreich, verursacht er Schaden in Höhe seines Magieattributs x 2 (spezielle elementare Effekte siehe unten) und hält das Opfer fest umschlungen. Nettoerfolge des Nahkampfangriffs erhöhen den Schaden auf normale Weise. Das Opfer kann wie üblich eine Schadenswiderstandsprobe mit Konstitution + Panzerung ablegen; der Angriff hat eine Durchschlagskraft von –(Magieattribut des Critters).</p>
+        <p>Sobald das Opfer einmal umschlungen ist, ist es gefangen und kann sich nicht mehr bewegen. In jeder Handlungsphase nach dieser verursacht der Critter automatisch erneut Schaden wie oben, bis das Opfer entkommen kann; das Opfer kann jedes Mal eine Schadenswiderstandsprobe ablegen. In der Handlungsphase des Opfers kann es mit einer Komplexen Handlung versuchen, zu entkommen. Dazu legt es eine Vergleichende Probe auf Stärke + Konstitution gegen Magie + Konstitution des Critters ab. Ist das Opfer erfolgreich, kann es entkommen und erleidet keinen weiteren Schaden. Einige Verschlingen-Kräfte haben sekundäre Effekte:</p>
+        <p>Verschlingen durch Erde: Das Opfer widersteht Körperlichem Schaden.</p>
+        <p>Verschlingen durch Feuer: Das Opfer widersteht Feuerschaden (S. 174).</p>
+        <p>Verschlingen durch Luft: Das Opfer widersteht Geistigem Schaden wie bei einem Toxinangriff mit Inhalationsvektor (S. 410). Panzerung schützt nicht gegen diesen Angriff, möglicherweise jedoch andere Schutzausrüstung (s. Tabelle Schutz vor Toxinen und Drogen, S. 410). Wird das Opfer durch den Geistigen Schaden bewusstlos, erleidet es weiter Schaden, wobei der überschüssige Geistige Schaden nach den normalen Regeln in Körperlichen Schaden übergeht.</p>
+        <p>Verschlingen durch Wasser: Das Opfer widersteht Geistigem Schaden. Dies ist schlimmer als normales Ertrinken, denn der Critter kann großen Druck auf das Opfer ausüben. Wird das Opfer durch den Geistigen Schaden bewusstlos, erleidet es weiter Schaden, wobei der überschüssige Geistige Schaden nach den normalen Regeln in Körperlichen Schaden übergeht.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="elementarerangriff" tabindex="-1" role="dialog" aria-labelledby="elementarerangriffLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="elementarerangriffLabel">Elementarer Angriff</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Art: P  Handlung: Komplex Reichweite: Speziell Dauer: Sofort</p>
+        <p>Mit dieser Kraft kann ein Critter einen tödlichen Strahl elementarer Energie projizieren, der sich beispielsweise als Flammenstoß oder Blitzstrahl äußern kann. Die Kraft bezieht sich immer auf ein bestimmtes Element – zum Beispiel besitzen Feuergeister die Kraft Elementarer Angriff (Feuer). Der Angriff wird wie ein normaler Fernkampfangriff behandelt, mit der Fertigkeit Exotische Fernkampfwaffe + Geschicklichkeit [Körperlich] des Critters und Reichweitenschritten, die alle (Magie) Meter ansteigen. Der Schadenscode beträgt (Magie x 2)K mit einer Durchschlagskraft von –(Magieattribut des Critters), dazu kommt noch der entsprechende elementare Schaden (S. 173), wie er in der Beschreibung des Critters angegeben ist.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="materialisierung" tabindex="-1" role="dialog" aria-labelledby="materialisierungLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="materialisierungLabel">Materialisierung</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Art: M  Handlung: Komplex Reichweite: Selbst Dauer: Aufrechterhalten</p>
+        <p>Zauberer und viele Critter können ihren Körper verlassen und sich auf die Astralebene projizieren. Und ebenso können sich viele Astralwesen in die physische Welt projizieren und einen provisorischen „Körper“ bilden, den sie bewohnen, solange sie dort sind. Das ermöglicht es ihnen, mit physischen Lebewesen zu interagieren. Zusätzlich verfügen sie über die Kraft Immunität gegen Normale Waffen, solange sie materialisiert sind. Materialisierung und Entmaterialisierung (um auf die Astralebene zurückzukehren) erfordern jeweils eine Komplexe Handlung.</p>
+        <p>Ein Critter mit der Kraft Immunität besitzt eine verstärkte Resistenz gegen bestimmte Arten von Angriffen oder sonstige Beeinträchtigungen. Effektiv hat der Critter gegen diesen speziellen Schaden einen Verstärkten Panzer (S. 401), der dem Doppelten seiner Essenz entspricht. Das bedeutet, wenn der modifi zierte Schadenscode des Angriffs nicht die Immunitätsstufe überschreitet, dann verursacht der Angriff keinen Schaden. Übersteigt der modifi zierte Schadenscode die Immunitätsstufe, wird eine normale Schadenswiderstandsprobe fällig, wobei die Immunitätsstufe zum Würfelpool dieser Probe hinzuaddiert wird. Zusätzlich zählt die Hälfte der Immunitätsstufe (also die Essenz des Critters) als automatische Erfolge bei dieser Probe.</p>
+        <p>Einige Immunitäten wirken etwas anders, da der „Angriff“, gegen den sie schützen, keinen Schaden im eigentlichen Sinne hervorruft.</p>
+        <p>Immunität gegen Alter: Manche Wesen sind buchstäblich alterslos. Critter mit dieser Immunität altern nicht und erleiden auch keine Beeinträchtigungen durch Alterung.</p>
+        <p>Immunität gegen normale Waffen: Gilt für alle Angriffe, die nicht magischer Natur sind; Waffenfoki, Zaubersprüche und Adepten- oder Critterkräfte funktionieren wie gehabt. Hat der Critter gleichzeitig die Schwäche Allergie, dann wirkt die Immunität auch nicht gegen nichtmagische Angriffe mittels des Allergens.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+{% endblock content %}

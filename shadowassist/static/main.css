@@ -44,10 +44,10 @@ html, body {
 .card {
   flex-basis: content;
   margin: 5px;
-  width: 150px;
-  height: 105px;
-  align-self: flex-start;
+  width: 180px;
+  height: 165px;
   /*
+  align-self: flex-start;
   margin-bottom: 15px !important;
   min-width: 25rem;
   max-width: 25rem;
@@ -61,13 +61,16 @@ html, body {
 
 .card-header {
   font-weight: bold;
-  font-size: 0.6em;
+  font-size: 1em;
   padding: 5px 10px;
 }
 
 .card-body {
-  font-size: 0.5em;
+  font-size: 1em;
   padding: 5px 10px;
+}
+.card-link {
+  margin-bottom: 5px;
 }
 
 .card .btn {

@@ -68,6 +68,21 @@ def characterDamageChange(char_id, type, action):
     db.session.commit()
     return jsonify({"result": "ok"})
 
+@app.route("/spirits")
+def spirits():
+    link = [
+        {
+            'url': '#',
+            'icon': 'bars',
+        },
+        {
+            'url': url_for('createPrepSelectSpell', _external=True),
+            'icon': 'plus-circle',
+        },
+    ]
+    return render_template('spirits.html', **locals(), title="Geister")
+
+
 @app.route("/")
 @app.route("/preps")
 def preps():
