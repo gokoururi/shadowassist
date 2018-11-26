@@ -11,31 +11,59 @@ function onLoad() {
     $('a[name=prepDelete]').on('click touch', prepDelete);
     $('a.fa-bars').on('click touch', openMenue);
     $('.saMenueOverlay').on('click touch', closeMenue);
-    $('#stunUp').on('click touch', increaseStun);
-    $('#stunDown').on('click touch', decreaseStun);
-    $('#physUp').on('click touch', increasePhys);
-    $('#physDown').on('click touch', decreasePhys);
+    $('.saDmgBtn').on('click touch', controlDmg);
+    $('.saStatsBtn').on('click touch', controlStats);
 }
 
-function increasePhys() {
-  changeDamage("physical", "increase");
-}
-
-function decreasePhys() {
-  changeDamage("physical", "decrease");
-}
-
-function increaseStun() {
-  changeDamage("stun", "increase");
-}
-
-function decreaseStun() {
-  changeDamage("stun", "decrease");
-}
-
-function changeDamage(type, action) {
+function controlStats(event) {
+  var text = event.target.text;
+  var stat = event.target.name;
+  var char_id = event.target.id;
+  var origin = parseInt($('td[name=' + stat + '].saStatsOrigin').text());
+  var value = parseInt($('td[name=' + stat + '].saStatsDisplay').text());
+  if ( text == "+1") {
+    var action = "increase";
+    var newValue = value + 1;
+  } else if ( text == "-1") {
+    var action = "decrease";
+    var newValue = value - 1;
+  }
   $.getJSON(
-    $SCRIPT_ROOT + '/character/1/damage/' + type + '/' + action, function(data) {
+    $SCRIPT_ROOT + '/character/' + char_id + '/stat/' + stat + '/' + action, function(data) {
+      $('td[name=' + stat + '].saStatsDisplay').text(newValue);
+      $('td[name=' + stat + '].saStatsDisplay').addClass("text-success");
+      $('td[name=' + stat + '].saStatsDisplay').addClass("font-weight-bold");
+      if (newValue > origin) {
+        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-danger");
+        $('td[name=' + stat + '].saStatsDisplay').addClass("text-success");
+        $('td[name=' + stat + '].saStatsDisplay').addClass("font-weight-bold");
+      } else if (newValue < origin) {
+        $('td[name=' + stat + '].saStatsDisplay').addClass("text-danger");
+        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-success");
+        $('td[name=' + stat + '].saStatsDisplay').addClass("font-weight-bold");
+
+      } else if (newValue == origin) {
+        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-danger");
+        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-success");
+        $('td[name=' + stat + '].saStatsDisplay').removeClass("font-weight-bold");
+      }
+    });
+}
+
+function controlDmg(event) {
+  var value = event.target.text;
+  var type = event.target.name;
+  var char_id = event.target.id;
+  if (value == "+1") {
+    changeDamage(char_id, type, "increase");
+  } else if (value == "-1") {
+    changeDamage(char_id, type, "decrease");
+  }
+}
+
+function changeDamage(char_id, type, action) {
+  $.getJSON(
+    $SCRIPT_ROOT + '/character/' + char_id + '/damage/' + type + '/' + action, function(data) {
       updateDamageBoxes(type, data.damage, data.maxDamage);
     }
   )

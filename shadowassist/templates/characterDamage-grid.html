@@ -31,8 +31,11 @@
   </div>
   </div>
   <div class="saDamageTrackButtons">
-    <a id="physDown" class="btn btn-sm btn-primary">-1</a>
-    <a id="physUp" class="btn btn-sm btn-primary">+1</a>
+    <a name="physical" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">-1</a>
+    <a name="physical" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">+1</a>
+    <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">
+      <i class="fas fa-sync-alt"></i>
+    </a>
   </div>
 </div>
 
@@ -51,7 +54,10 @@
   {% endfor %}
   </div>
   <div class="saDamageTrackButtons">
-    <a id="stunDown" class="btn btn-sm btn-primary">-1</a>
-    <a id="stunUp" class="btn btn-sm btn-primary">+1</a>
+    <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">-1</a>
+    <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">+1</a>
+    <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">
+      <i class="fas fa-sync-alt"></i>
+    </a>
   </div>
 </div>

@@ -2,7 +2,7 @@
 {% block content %}
 
   <div class="sticky-top" style="z-index: 6;">
-    <table class="table table-light saTableStats" style="font-size: 0.8em;border-bottom: 1px solid #3d3d3d">
+    <table class="table table-light saTableStats" style="font-size: 0.8em;border-bottom: 1px solid #3d3d3d; text-align: center;">
       <thead class="thead-dark">
         <tr>
           <th class="text-warning">K</th>
@@ -30,7 +30,7 @@
           <td>{{ char.intuition }}</td>
           <td>{{ char.logic }}</td>
           <td>{{ char.willpower }}</td>
-          <td class="table-active" style="border-left: 1px solid #000">{{ char.edge }}</td>
+          <td class="table-active" style="border-left: 1px solid #000">{{ char.currentEdge }}/{{ char.edge }}</td>
           <td class="table-active">{{ char.magic }}</td>
           <td class="table-active">{{ char.essence }}</td>
           <td style="border-left: 1px solid #000">9</td>

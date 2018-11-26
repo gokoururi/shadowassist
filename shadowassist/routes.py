@@ -12,14 +12,48 @@ def character(char_id=1):
             'icon': 'bars',
         },
         {
-            'url': '#',
-            'icon': '',
+            'url': url_for("characterEdit", _external=True),
+            'icon': 'pen-alt',
         },
     ]
     char = Character.query.filter(Character.id == char_id).first()
     charPhys = math.ceil((char.body/2)+8)
     charStun = math.ceil((char.willpower/2)+8)
     return render_template('character-grid.html', **locals(), title=char.name)
+
+@app.route("/character/edit")
+@app.route("/character/<int:char_id>/edit")
+def characterEdit(char_id=1):
+    link = [
+        {
+            'url': url_for("character", _external=True),
+            'icon': 'chevron-left',
+        },
+        {
+            'url': '#',
+            'icon': '',
+        },
+    ]
+    char = Character.query.filter(Character.id == char_id).first()
+    return render_template('characterEdit.html', **locals(), title=char.name)
+
+@app.route("/character/<int:char_id>/stat/<stat>/<action>")
+def characterStatChange(stat, action, char_id=1):
+    char = Character.query.filter(Character.id == char_id)
+    statCurrent = getattr(char.first(), stat)
+    if action == "increase":
+        statNew = statCurrent + 1
+    if action == "decrease":
+        if statCurrent <= 0:
+            statNew = 0
+        else:
+            statNew = statCurrent - 1
+
+    char.update({stat: statNew})
+    db.session.commit()
+
+    return jsonify({"result": "ok"})
+
 
 @app.route("/character/damage")
 @app.route("/character/<int:char_id>/damage")
@@ -47,29 +81,23 @@ def characterDamageChange(char_id, type, action):
     if type == "physical":
         maxDamage = charPhys + char.first().body + 1
         currentDmg = char.first().physDamage
-        if action == "increase":
-            newDamage = currentDmg + 1;
-            if newDamage > charPhys + char.first().body + 1:
-                newDamage = charPhys + char.first().body + 1
-        if action == "decrease":
-            newDamage = currentDmg - 1;
-            if newDamage < 0:
-                newDamage = 0;
-        char.update({'physDamage': newDamage})
-    if type == "stun":
+        dmgTarget = "physDamage"
+    elif type =="stun":
         maxDamage = charStun
         currentDmg = char.first().stunDamage
-        if action == "increase":
-            newDamage = currentDmg + 1;
-            if newDamage > charStun:
-                newDamage = charStun
-        if action == "decrease":
-            newDamage = currentDmg - 1;
-            if newDamage < 0:
-                newDamage = 0;
-        char.update({'stunDamage': newDamage})
+        dmgTarget = "stunDamage"
+    if action == "increase":
+        newDamage = currentDmg + 1;
+        if newDamage > maxDamage:
+            newDamage = maxDamage
+    elif action == "decrease":
+        newDamage = currentDmg - 1;
+        if newDamage < 0:
+            newDamage = 0;
 
+    char.update({dmgTarget: newDamage})
     db.session.commit()
+
     return jsonify({"result": "ok", "damage": newDamage, "maxDamage": maxDamage })
 
 @app.route("/spirits")

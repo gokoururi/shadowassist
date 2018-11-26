@@ -1,0 +1,62 @@
+{% extends "grid.html" %}
+{% block content %}
+<table class="table table-light table-striped table-hover saEdit" style="text-align: center;">
+  <thead class="thead-dark">
+    <tr>
+      <th>Attribut</th>
+      <th></th>
+      <th>Stufe</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stat in [
+      {"name": "body", "title": "Konstitution" },
+      {"name": "agility", "title": "Geschicklichkeit" },
+      {"name": "reaction", "title": "Reaktion" },
+      {"name": "strength", "title": "Stärke" },
+      {"name": "break"},
+      {"name": "charisma", "title": "Charisma" },
+      {"name": "intuition", "title": "Intuition" },
+      {"name": "logic", "title": "Logik" },
+      {"name": "willpower", "title": "Willenskraft" },
+      {"name": "break"},
+      {"name": "edge", "title": "Edge" },
+      {"name": "magic", "title": "Magie" },
+    ] %}
+      {% if stat.name == "break" %}
+        </tbody>
+        <thead class="thead-dark">
+          <tr>
+            <th colspan=4></th>
+          </tr>
+        </thead>
+        <tbody>
+      {% else %}
+        <tr>
+          <th>{{ stat.title }}</th>
+          <td><a name="{{ stat.name }}" id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn">-1</a></td>
+          <td name="{{ stat.name }}" class="saStatsOrigin" style="display: none">{{ char[stat.name] }}</td>
+          <td name="{{ stat.name }}" class="saStatsDisplay">{{ char[stat.name] }}</td>
+          <td><a name="{{ stat.name }}" id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn">+1</a></td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+    <tr>
+      <th>Essence</th>
+      <td></td>
+      <td>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="{{ char.essence }}" aria-label="Recipient's username" aria-describedby="button-addon2" style="width: 15px;">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="button-addon2">
+              <i class="fas fa-check"></i>
+            </button>
+          </div>
+        </div>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock content %}
