@@ -13,11 +13,13 @@ def character(char_id=1):
         },
         {
             'url': '#',
-            'icon': 'pencil-alt',
+            'icon': '',
         },
     ]
     char = Character.query.filter(Character.id == char_id).first()
-    return render_template('character.html', **locals(), title="Character Sheet")
+    charPhys = math.ceil((char.body/2)+8)
+    charStun = math.ceil((char.willpower/2)+8)
+    return render_template('character-grid.html', **locals(), title=char.name)
 
 @app.route("/character/damage")
 @app.route("/character/<int:char_id>/damage")

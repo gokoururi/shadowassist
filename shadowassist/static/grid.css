@@ -1,0 +1,207 @@
+body {
+  background: #000;
+}
+
+/* Page */
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 5fr;
+  grid-template-areas:
+    "header"
+    "content";
+
+  height: 100vh;
+  background: #404040;
+}
+
+/* Header */
+.saNav {
+  grid-area: header;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr;
+
+  padding: 10px 20px;
+  background: #000;
+  color: #FFF;
+}
+
+
+/* Content */
+.content {
+  overflow: auto;
+  grid-area: content;
+}
+
+.content .table {
+  margin: 0;
+}
+.content table td,
+.content .table th {
+  padding: 5px 7px;
+}
+
+/* Content - saDamageTrack */
+
+.saFlex {
+  display: flex;
+}
+
+.saDamageTrack {
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 5fr;
+  grid-template-areas:
+    "title title"
+    "damage buttons";
+}
+
+.saDamageTrackTitle {
+  grid-area: title;
+
+  text-align: center;
+  padding: 5px 5px 5px 10px;
+  background: #212529;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #FFF;
+  border-top: 1px solid #32383e;
+  border-bottom: 1px solid #32383e;
+}
+
+.saDamageTrackBody {
+  grid-area: damage;
+
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  width: 91px;
+}
+
+.saDamageTrackBox {
+  width: 25px;
+  height: 25px;
+  padding: 2px 5px;
+  border: 2px solid #FFF;
+  border-radius: 3px;
+  margin: 1px;
+  color: #666666;
+  background: #FFF;
+}
+.saDamageTrackBox:hover {
+  border: 2px solid #d00000;
+}
+.saDamageTrackBoxOverflow {
+  background: #bababa;
+  border: 2px solid #bababa;
+}
+.saDamageTrackBoxDead {
+  background: #feb3b3;
+  border: 2px solid #feb3b3;
+}
+
+.saDamageTrackButtons {
+  grid-area: buttons;
+
+  padding-top: 5px;
+  margin-right: 10px;
+  width: 40px;
+  color: #FFF;
+}
+.saDamageTrackButtons .btn {
+  width: 40px;
+  margin-bottom: 3px;
+}
+
+/* Footer */
+.footer {
+  color: #FFF;
+  background: #000;
+}
+
+/* saMenue */
+
+.saMenue {
+  grid-area: navigation;
+
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -500px;
+  z-index: 30;
+  transition-property: left;
+  transition-duration: 0.5s;
+  color: #989898;
+  background: #FFF;
+}
+
+.saMenue ul {
+  padding: 0;
+  list-style: none;
+}
+.saMenue li {
+  padding: 20px 40px 20px 20px;
+}
+
+.saMenue li:hover {
+  background: #f1f1f1;
+  cursor: pointer;
+}
+
+.saMenue a {
+  color: #989898;
+  text-decoration: none;
+}
+
+.saMenueOverlay,
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.8);
+  transition-property: all;
+  transition-duration: 1s;
+  z-index: 20;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+@media screen and (min-width: 700px) {
+  .page {
+    grid-template-columns: auto 3fr;
+    grid-template-rows: auto 5fr;
+    grid-template-areas:
+      "header header"
+      "navigation content";
+
+  }
+
+  .saMenue {
+    grid-area: navigation;
+
+    display: flex;
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: 0 !important;
+    z-index: 30;
+    transition-property: left;
+    transition-duration: 0.5s;
+    color: #989898;
+    background: #FFF;
+
+    border-right: 2px solid #212529;
+  }
+}

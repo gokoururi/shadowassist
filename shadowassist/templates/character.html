@@ -3,12 +3,184 @@
 
 <div>
 
-  <div style="text-align: center;"><h1 class="text-white mb-3">{{ char.name }}</h1></div>
+  <!--
+  <div style="text-align: center;"><h2 class="text-white mb-3">{{ char.name }}</h2></div>
+  -->
 
+  <div class="sticky-top" style="z-index: 6;">
+    <table class="table table-light saTableStats" style="font-size: 0.8em;border-bottom: 1px solid #3d3d3d">
+      <thead class="thead-dark">
+        <tr>
+          <th class="text-warning">K</th>
+          <th class="text-warning">G</th>
+          <th class="text-warning">R</th>
+          <th class="text-warning">S</th>
+          <th class="text-info">C</th>
+          <th class="text-info">I</th>
+          <th class="text-info">L</th>
+          <th class="text-info">W</th>
+          <th class="text-warning">ED</th>
+          <th class="text-warning">M</th>
+          <th class="text-warning">ES</th>
+          <th class="text-info">LiK</th>
+          <th class="text-info">LiG</th>
+          <th class="text-info">LiS</th>
+        </tr>
+      <tbody>
+        <tr>
+          <td class="table-active">{{ char.body }}</td>
+          <td class="table-active">{{ char.agility }}</td>
+          <td class="table-active">{{ char.reaction }}</td>
+          <td class="table-active">{{ char.strength }}</td>
+          <td style="border-left: 1px solid #000">{{ char.charisma }}</td>
+          <td>{{ char.intuition }}</td>
+          <td>{{ char.logic }}</td>
+          <td>{{ char.willpower }}</td>
+          <td class="table-active" style="border-left: 1px solid #000">{{ char.edge }}</td>
+          <td class="table-active">{{ char.magic }}</td>
+          <td class="table-active">{{ char.essence }}</td>
+          <td style="border-left: 1px solid #000">9</td>
+          <td>9</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="saFlex">
 
-    <div class="saStats">
+    <div style="flex-grow: 1; display: flex; flex-wrap: wrap">
+      <div style="flex-grow: 2;">
+        <table class="table table-striped table-hover table-light" style="font-size: 0.8em">
+          <thead class="thead-dark">
+            <tr>
+              <th colspan="5">Fertigkeiten</th>
+            </tr>
+            <tr>
+              <th>Fertigkeit</th>
+              <th>At</th>
+              <th>Sp</th>
+              <th>St</th>
+              <th>D.</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Alchemie</td>
+            <td>M</td>
+            <td><a class="badge badge-secondary text-white">Berührung</a></td>
+            <td>8</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Herbeirufen</td>
+            <td>M</td>
+            <td>-</td>
+            <td>6</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <td>Spruchzauberei</td>
+            <td>M</td>
+            <td>-</td>
+            <td>6</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <td>Arkana</td>
+            <td>L</td>
+            <td>-</td>
+            <td>5</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Chemie</td>
+            <td>L</td>
+            <td>-</td>
+            <td>4</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>Wahrnehmung</td>
+            <td>I</td>
+            <td>-</td>
+            <td>4</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>Überreden</td>
+            <td>C</td>
+            <td>-</td>
+            <td>2</td>
+            <td>9</td>
+          </tr>
+        </table>
+      </div>
+      <div style="flex-grow: 2">
+        <table class="table table-hover table-striped table-light" style="font-size: 0.8em">
+          <thead class="thead-dark">
+            <tr>
+              <th colspan="5">Fertigkeiten</th>
+            </tr>
+            <tr>
+              <th>Fertigkeit</th>
+              <th>At</th>
+              <th>Sp</th>
+              <th>St</th>
+              <th>Di</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Askennen</td>
+            <td>I</td>
+            <td><a class="badge badge-secondary text-white">Berührung</a></td>
+            <td>1</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Bodenfahrzeuge</td>
+            <td>R</td>
+            <td>-</td>
+            <td>1</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Erste Hilfe</td>
+            <td>L</td>
+            <td>-</td>
+            <td>1</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Klingenwaffen</td>
+            <td>G</td>
+            <td>-</td>
+            <td>1</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>Pistolen</td>
+            <td>G</td>
+            <td>-</td>
+            <td>1</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>Ritualzauberei</td>
+            <td>M</td>
+            <td>-</td>
+            <td>1</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <td>Verkleiden</td>
+            <td>I</td>
+            <td>-</td>
+            <td>1</td>
+            <td>4</td>
+          </tr>
+        </table>
+      </div>
 
+       <!--
      <div>
        <table class="table table-hover table-striped table-light text-dark">
          <thead class="thead-dark">
@@ -148,140 +320,7 @@
     <div class="saStatsImage"><img src="{{ url_for('static', filename='morris.PNG', _external=true) }}" /></div>
 
   </div>
-
-  <div style="display: flex; flex-flow: wrap; font-size: 0.8em">
-    <div style="margin: 10px; flex-grow: 1;">
-      <table class="table table-striped table-hover table-light">
-        <thead class="thead-dark">
-          <tr>
-            <th colspan="5">Fertigkeiten</th>
-          </tr>
-          <tr>
-            <th>Fertigkeit</th>
-            <th>Attribut</th>
-            <th>Spezialisierung</th>
-            <th>Stufe</th>
-            <th>Pool</th>
-          </tr>
-        </thead>
-        <tr>
-          <td>Alchemie</td>
-          <td>Magie</td>
-          <td><a class="badge badge-secondary text-white">Berührung</a></td>
-          <td>8</td>
-          <td>15</td>
-        </tr>
-        <tr>
-          <td>Herbeirufen</td>
-          <td>Magie</td>
-          <td>-</td>
-          <td>6</td>
-          <td>13</td>
-        </tr>
-        <tr>
-          <td>Spruchzauberei</td>
-          <td>Magie</td>
-          <td>-</td>
-          <td>6</td>
-          <td>13</td>
-        </tr>
-        <tr>
-          <td>Arkana</td>
-          <td>Logik</td>
-          <td>-</td>
-          <td>5</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>Chemie</td>
-          <td>Logik</td>
-          <td>-</td>
-          <td>4</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>Wahrnehmung</td>
-          <td>Intuition</td>
-          <td>-</td>
-          <td>4</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>Überreden</td>
-          <td>Charisma</td>
-          <td>-</td>
-          <td>2</td>
-          <td>9</td>
-        </tr>
-      </table>
-    </div>
-    <div style="margin: 10px; flex-grow: 1;">
-      <table class="table table-hover table-striped table-light">
-        <thead class="thead-dark">
-          <tr>
-            <th colspan="5">Fertigkeiten</th>
-          </tr>
-          <tr>
-            <th>Fertigkeit</th>
-            <th>Attribut</th>
-            <th>Spezialisierung</th>
-            <th>Stufe</th>
-            <th>Pool</th>
-          </tr>
-        </thead>
-        <tr>
-          <td>Askennen</td>
-          <td>Intuition</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Bodenfahrzeuge</td>
-          <td>Reaktion</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Erste Hilfe</td>
-          <td>Logik</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Klingenwaffen</td>
-          <td>Gesch.</td>
-          <td>-</td>
-          <td>1</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Pistolen</td>
-          <td>Gesch.</td>
-          <td>-</td>
-          <td>1</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Ritualzauberei</td>
-          <td>Magie</td>
-          <td>-</td>
-          <td>1</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>Verkleiden</td>
-          <td>Intuition</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-      </table>
-    </div>
+      -->
   </div>
-
-</div>
 
 {% endblock content %}

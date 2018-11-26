@@ -230,7 +230,7 @@ a.saButton:active {
 
 .saFlex {
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
 }
 
 .saStats {
@@ -249,7 +249,9 @@ a.saButton:active {
 }
 
 .saStats > div {
+  /*
   padding: 10px 20px;
+  */
   flex-grow: 1;
 }
 
@@ -366,4 +368,9 @@ a.saButton:active {
 .saDamageTrackBoxDead {
   background: #feb3b3;
   border: 2px solid #feb3b3;
+}
+
+.saTableStats th, .saTableStats td {
+  border-color: #000;
+  padding: 6px;
 }

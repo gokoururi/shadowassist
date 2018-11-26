@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ url_for('static', filename='favicon.png', _external=true) }}" type="image/png"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css', _external=true) }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css', _external=true) }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>Shadowassist{% if title %} - {{ title }}{% endif %}</title>
   </head>
@@ -20,30 +20,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type=text/javascript src="{{ url_for('static', filename='main.js', _external=true) }}"></script>
 
-    <div class="saNav">
-      <div class="saNavButtons saNavButtonsLeft">
-        <a href="{{ link[0].url }}" class="saButton fas fa-{{ link[0].icon }}"></a>
-      </div>
-      <div class="saNavTitle">{{ title }}{% if subtitle %}: {{ subtitle }}{% endif %}</div>
-      <div class="saNavButtons saNavButtonsRight">
-        <a href="{{ link[1].url }}" class="saButton fas fa-{{ link[1].icon }}"></a>
-      </div>
-    </div>
 
-    <div class="saMenue">
-      <ul>
-        <li><i class="fas fa-id-card"></i> <a href="{{ url_for('character', _external='true') }}">Character Daten</a></li>
-        <li><i class="fas fa-medkit"></i> <a href="{{ url_for('characterDamage', _external='true') }}">Schadens Monitor</a></li>
-        <li><i class="fas fa-flask"></i> <a href="{{ url_for('preps', _external='true') }}">Präparate</a></li>
-        <li><i href="#" class="fas fa-fire"></i> <a>Zauber</a></li>
-        <li><i class="fas fa-ghost"></i> <a href="{{ url_for('spirits', _external='true') }}">Geister</a></li>
-      </ul>
-    </div>
-    <div class="saMenueOverlay">
-    </div>
+    <div class="page">
 
-    <div style="margin-top: 9vh">
-    {% block content %}{% endblock %}
-    </div>
+      <div class="saNav">
+        <div class="saNavButtons saNavButtonsLeft">
+          <a href="{{ link[0].url }}" class="saButton fas fa-{{ link[0].icon }}"></a>
+        </div>
+        <div class="saNavTitle">{{ title }}{% if subtitle %}: {{ subtitle }}{% endif %}</div>
+        <div class="saNavButtons saNavButtonsRight">
+          <a href="{{ link[1].url }}" class="saButton fas fa-{{ link[1].icon }}"></a>
+        </div>
+      </div> <!-- Header -->
+
+      <div class="saMenue">
+        <ul>
+          <li><i class="fas fa-id-card"></i> <a href="{{ url_for('character', _external='true') }}">Character Sheet</a></li>
+          <li><i class="fas fa-flask"></i> <a href="{{ url_for('preps', _external='true') }}">Präparate</a></li>
+          <li><i href="#" class="fas fa-fire"></i> <a>Zauber</a></li>
+          <li><i class="fas fa-ghost"></i> <a href="{{ url_for('spirits', _external='true') }}">Geister</a></li>
+        </ul>
+      </div>
+      <div class="saMenueOverlay">
+      </div><!-- Navigation -->
+
+
+      <div class="content">
+        {% block content %}{% endblock %}
+      </div> <!-- content -->
+
+    </div><!-- Page -->
   </body>
 </html>
