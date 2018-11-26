@@ -45,6 +45,7 @@ def characterDamageChange(char_id, type, action):
     charPhys = math.ceil((char.first().body/2)+8)
     charStun = math.ceil((char.first().willpower/2)+8)
     if type == "physical":
+        maxDamage = charPhys + char.first().body
         currentDmg = char.first().physDamage
         if action == "increase":
             newDamage = currentDmg + 1;
@@ -56,6 +57,7 @@ def characterDamageChange(char_id, type, action):
                 newDamage = 0;
         char.update({'physDamage': newDamage})
     if type == "stun":
+        maxDamage = charStun
         currentDmg = char.first().stunDamage
         if action == "increase":
             newDamage = currentDmg + 1;
@@ -68,7 +70,7 @@ def characterDamageChange(char_id, type, action):
         char.update({'stunDamage': newDamage})
 
     db.session.commit()
-    return jsonify({"result": "ok"})
+    return jsonify({"result": "ok", "damage": newDamage, "maxDamage": maxDamage })
 
 @app.route("/spirits")
 def spirits():

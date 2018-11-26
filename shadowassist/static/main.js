@@ -35,10 +35,20 @@ function decreaseStun() {
 
 function changeDamage(type, action) {
   $.getJSON(
-    $SCRIPT_ROOT + '/character/1/damage/' + type + '/' + action, function(jqXHR) {
-      location.reload()
+    $SCRIPT_ROOT + '/character/1/damage/' + type + '/' + action, function(data) {
+      updateDamageBoxes(type, data.damage, data.maxDamage);
     }
   )
+}
+
+function updateDamageBoxes(type, damage, maxDamage) {
+    for (i = 1; i <= maxDamage;i++) {
+        if (i <= damage) {
+            $('#' + type + i).css("display", "block");
+        } else {
+            $('#' + type + i).css("display", "none");
+        }
+    }
 }
 
 function openMenue() {

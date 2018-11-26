@@ -4,15 +4,21 @@
     {% for n in range(charPhys) %}
     <div class="saDamageTrackBox">
       {% if char.physDamage >= n + 1 %}
-      <i class="fas fa-times"></i>
+        {% set display = 'block' %}
+      {% else %}
+        {% set display = 'none'  %}
       {% endif %}
+      <i id="physical{{ n + 1 }}" class="fas fa-times" style="display: {{ display }}"></i>
     </div>
     {% endfor %}
     {% for n in range(char.body) %}
     <div class="saDamageTrackBox saDamageTrackBoxOverflow">
       {% if char.physDamage >= charPhys +  n + 1 %}
-      <i class="fas fa-times"></i>
+        {% set display = 'block' %}
+      {% else %}
+        {% set display = 'none'  %}
       {% endif %}
+      <i id="physical{{ charPhys + n + 1 }}" class="fas fa-times" style="display: {{ display }}"></i>
     </div>
   {% endfor %}
   <div class="saDamageTrackBox saDamageTrackBoxDead">
@@ -33,8 +39,11 @@
   {% for n in range(charStun) %}
     <div class="saDamageTrackBox bg-light text-dark">
       {% if char.stunDamage >= n + 1 %}
-      <i class="fas fa-times"></i>
+        {% set display = 'block' %}
+      {% else %}
+        {% set display = 'none'  %}
       {% endif %}
+      <i id="stun{{ n + 1 }}" class="fas fa-times" style="display: {{ display }}"></i>
     </div>
   {% endfor %}
   </div>
