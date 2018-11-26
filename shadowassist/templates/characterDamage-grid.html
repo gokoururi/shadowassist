@@ -23,8 +23,11 @@
   {% endfor %}
   <div class="saDamageTrackBox saDamageTrackBoxDead">
       {% if char.physDamage >= charPhys +  char.body + 1 %}
-      <i class="fas fa-times"></i>
+        {% set display = 'block' %}
+      {% else %}
+        {% set display = 'none'  %}
       {% endif %}
+      <i id="physical{{ charPhys + char.body + 1 }}" class="fas fa-times" style="display: {{ display }}"></i>
   </div>
   </div>
   <div class="saDamageTrackButtons">

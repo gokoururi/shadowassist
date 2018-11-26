@@ -45,7 +45,7 @@ def characterDamageChange(char_id, type, action):
     charPhys = math.ceil((char.first().body/2)+8)
     charStun = math.ceil((char.first().willpower/2)+8)
     if type == "physical":
-        maxDamage = charPhys + char.first().body
+        maxDamage = charPhys + char.first().body + 1
         currentDmg = char.first().physDamage
         if action == "increase":
             newDamage = currentDmg + 1;
