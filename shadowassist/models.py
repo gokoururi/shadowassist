@@ -19,6 +19,17 @@ class Character(db.Model):
     physDamage = db.Column(db.Integer)
     stunDamage = db.Column(db.Integer)
 
+class Skill(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    character_id = db.Column(db.Integer, db.ForeignKey('character.id'))
+    name = db.Column(db.String(60))
+    level = db.Column(db.Integer)
+    attribute = db.Column(db.String(15))
+
+class Specialization(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    skill_id = db.Column(db.Integer, db.ForeignKey('skill.id'))
+    name = db.Column(db.String(60))
 
 class Spell(db.Model):
     id = db.Column(db.Integer, primary_key=True)

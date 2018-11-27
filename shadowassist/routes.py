@@ -38,7 +38,9 @@ def characterEdit(char_id=1):
     return render_template('characterEdit.html', **locals(), title=char.name)
 
 @app.route("/character/<int:char_id>/stat/<stat>/<action>")
-def characterStatChange(stat, action, char_id=1):
+@app.route("/character/<int:char_id>/stat/<stat>/<action>/<int:value>")
+@app.route("/character/<int:char_id>/stat/essence/<action>/<float:value>")
+def characterStatChange(action, value=0, stat="essence", char_id=1):
     char = Character.query.filter(Character.id == char_id)
     statCurrent = getattr(char.first(), stat)
     if action == "increase":
@@ -48,6 +50,10 @@ def characterStatChange(stat, action, char_id=1):
             statNew = 0
         else:
             statNew = statCurrent - 1
+    if action == "set":
+        statNew = round(value,2)
+        if statNew < 0:
+            statNew = 0
 
     char.update({stat: statNew})
     db.session.commit()

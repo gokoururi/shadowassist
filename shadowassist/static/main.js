@@ -16,36 +16,46 @@ function onLoad() {
 }
 
 function controlStats(event) {
-  var text = event.target.text;
   var stat = event.target.name;
   var char_id = event.target.id;
-  var origin = parseInt($('td[name=' + stat + '].saStatsOrigin').text());
-  var value = parseInt($('td[name=' + stat + '].saStatsDisplay').text());
-  if ( text == "+1") {
-    var action = "increase";
-    var newValue = value + 1;
-  } else if ( text == "-1") {
-    var action = "decrease";
-    var newValue = value - 1;
+  if (stat == "essence") {
+    var action = "set"
+    var newValue = $("input[name=essence]").val();
+    var origin = parseFloat($('div[name=essence]').text());
+    var displayTarget = $("input[name=essence]");
+    var urlTarget = '/character/' + char_id + '/stat/' + stat + '/' + action + '/' + newValue
+  } else {
+    var text = event.target.text;
+    var origin = parseInt($('td[name=' + stat + '].saStatsOrigin').text());
+    var value = parseInt($('td[name=' + stat + '].saStatsDisplay').text());
+    var displayTarget = 'td[name=' + stat + '].saStatsDisplay'
+    if ( text == "+1") {
+      var action = "increase";
+      var newValue = value + 1;
+    } else if ( text == "-1") {
+      var action = "decrease";
+      var newValue = value - 1;
+    }
+    var urlTarget = '/character/' + char_id + '/stat/' + stat + '/' + action
   }
   $.getJSON(
-    $SCRIPT_ROOT + '/character/' + char_id + '/stat/' + stat + '/' + action, function(data) {
-      $('td[name=' + stat + '].saStatsDisplay').text(newValue);
-      $('td[name=' + stat + '].saStatsDisplay').addClass("text-success");
-      $('td[name=' + stat + '].saStatsDisplay').addClass("font-weight-bold");
+    $SCRIPT_ROOT + urlTarget, function(data) {
+      $(displayTarget).text(newValue);
+      $(displayTarget).addClass("text-success");
+      $(displayTarget).addClass("font-weight-bold");
       if (newValue > origin) {
-        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-danger");
-        $('td[name=' + stat + '].saStatsDisplay').addClass("text-success");
-        $('td[name=' + stat + '].saStatsDisplay').addClass("font-weight-bold");
+        $(displayTarget).removeClass("text-danger");
+        $(displayTarget).addClass("text-success");
+        $(displayTarget).addClass("font-weight-bold");
       } else if (newValue < origin) {
-        $('td[name=' + stat + '].saStatsDisplay').addClass("text-danger");
-        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-success");
-        $('td[name=' + stat + '].saStatsDisplay').addClass("font-weight-bold");
+        $(displayTarget).addClass("text-danger");
+        $(displayTarget).removeClass("text-success");
+        $(displayTarget).addClass("font-weight-bold");
 
       } else if (newValue == origin) {
-        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-danger");
-        $('td[name=' + stat + '].saStatsDisplay').removeClass("text-success");
-        $('td[name=' + stat + '].saStatsDisplay').removeClass("font-weight-bold");
+        $(displayTarget).removeClass("text-danger");
+        $(displayTarget).removeClass("text-success");
+        $(displayTarget).removeClass("font-weight-bold");
       }
     });
 }
