@@ -42,6 +42,12 @@
   </div>
 
   <div style="display: flex; flex-wrap: wrap">
+  {%- for skill in skills %}
+    {% if loop.index == ((skills|length)/2)|round(0,"ceil")|int +1  %}
+      </table>
+    </div>
+    {% endif %}
+    {% if loop.index == 1 or loop.index == ((skills|length)/2)|round(0,"ceil")|int +1 %}
     <div style="flex-grow: 2;">
       <table class="table table-striped table-hover table-light" style="font-size: 0.8em">
         <thead class="thead-dark">
@@ -53,119 +59,30 @@
             <th>D.</th>
           </tr>
         </thead>
-        <tr>
-          <td>Alchemie</td>
-          <td>M</td>
-          <td><a class="badge badge-secondary text-white">Berührung</a></td>
-          <td>8</td>
-          <td>15</td>
-        </tr>
-        <tr>
-          <td>Herbeirufen</td>
-          <td>M</td>
-          <td>-</td>
-          <td>6</td>
-          <td>13</td>
-        </tr>
-        <tr>
-          <td>Spruchzauberei</td>
-          <td>M</td>
-          <td>-</td>
-          <td>6</td>
-          <td>13</td>
-        </tr>
-        <tr>
-          <td>Arkana</td>
-          <td>L</td>
-          <td>-</td>
-          <td>5</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>Chemie</td>
-          <td>L</td>
-          <td>-</td>
-          <td>4</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>Wahrnehmung</td>
-          <td>I</td>
-          <td>-</td>
-          <td>4</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>Überreden</td>
-          <td>C</td>
-          <td>-</td>
-          <td>2</td>
-          <td>9</td>
-        </tr>
-      </table>
-    </div>
-    <div style="flex-grow: 2">
-      <table class="table table-hover table-striped table-light" style="font-size: 0.8em">
-        <thead class="thead-dark">
+        <tbody>
+    {% endif %}
           <tr>
-            <th>Fertigkeit</th>
-            <th>At</th>
-            <th>Sp</th>
-            <th>St</th>
-            <th>Di</th>
+            <td>{{ skill.name }}</td>
+            <td>{{ skill.attribute.0|upper }}</td>
+            <td>
+              {%- for specialization in skill.specializations %}
+                <a class="badge badge-secondary text-white">{{ specialization.name }} </a>
+              {%- endfor %}
+            </td>
+            <td>{{ skill.level }}</td>
+            <td>{{ skill.level + char[skill.attribute] }}</td>
           </tr>
-        </thead>
+      {% if loop.index == skills|length %}
+      {% if (skills|length)/2 != ((skills|length)/2)|int %}
         <tr>
-          <td>Askennen</td>
-          <td>I</td>
-          <td><a class="badge badge-secondary text-white">Berührung</a></td>
-          <td>1</td>
-          <td>4</td>
+          <td colspan=5>-</td>
         </tr>
-        <tr>
-          <td>Bodenfahrzeuge</td>
-          <td>R</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Erste Hilfe</td>
-          <td>L</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td>Klingenwaffen</td>
-          <td>G</td>
-          <td>-</td>
-          <td>1</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Pistolen</td>
-          <td>G</td>
-          <td>-</td>
-          <td>1</td>
-          <td>3</td>
-        </tr>
-        <tr>
-          <td>Ritualzauberei</td>
-          <td>M</td>
-          <td>-</td>
-          <td>1</td>
-          <td>8</td>
-        </tr>
-        <tr>
-          <td>Verkleiden</td>
-          <td>I</td>
-          <td>-</td>
-          <td>1</td>
-          <td>4</td>
-        </tr>
+      {% endif %}
+        </tbody>
       </table>
     </div>
+    {% endif %}
+  {%- endfor %}
   </div>
 
   <div class="saFlex">

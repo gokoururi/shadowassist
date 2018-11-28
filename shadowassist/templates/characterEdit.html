@@ -35,10 +35,9 @@
       {% else %}
         <tr>
           <th>{{ stat.title }}</th>
-          <td><a name="{{ stat.name }}" id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn">-1</a></td>
-          <td name="{{ stat.name }}" class="saStatsOrigin" style="display: none">{{ char[stat.name] }}</td>
-          <td name="{{ stat.name }}" class="saStatsDisplay">{{ char[stat.name] }}</td>
-          <td><a name="{{ stat.name }}" id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn">+1</a></td>
+          <td><a data-stat="{{ stat.name }}" data-action="decrease" data-origin="{{ char[stat.name] }}" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn"><i class="fas fa-minus"></i></a></td>
+          <td id="{{ stat.name }}">{{ char[stat.name] }}</td>
+          <td><a data-stat="{{ stat.name }}" data-action="increase" data-origin="{{ char[stat.name] }}" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn"><i class="fas fa-plus"></i></a></td>
         </tr>
       {% endif %}
     {% endfor %}
@@ -46,12 +45,11 @@
       <th>Essenz</th>
       <td></td>
       <td>
-        <div name="essence" style="display: none">{{ char.essence }}</div>
         <div class="input-group">
-          <input name="essence" type="text" class="form-control" value="{{ char.essence }}" style="width: 15px;">
+          <input id="essence" type="text" class="form-control" value="{{ char.essence }}" style="width: 15px;">
           <div class="input-group-append">
-            <button name="essence" class="btn btn-primary saStatsBtn" type="button" id="{{ char.id }}">
-              Set
+            <button data-stat="essence" data-action="set" data-origin="{{ char.essence }}" data-char_id="{{ char.id }}" class="btn btn-primary saStatsBtn" type="button">
+              <i class="fas fa-save"></i>
             </button>
           </div>
         </div>

@@ -16,64 +16,53 @@ function onLoad() {
 }
 
 function controlStats(event) {
-  var stat = event.target.name;
-  var char_id = event.target.id;
-  if (stat == "essence") {
-    var action = "set"
-    var newValue = $("input[name=essence]").val();
-    var origin = parseFloat($('div[name=essence]').text());
-    var displayTarget = $("input[name=essence]");
-    var urlTarget = '/character/' + char_id + '/stat/' + stat + '/' + action + '/' + newValue
-  } else {
-    var text = event.target.text;
-    var origin = parseInt($('td[name=' + stat + '].saStatsOrigin').text());
-    var value = parseInt($('td[name=' + stat + '].saStatsDisplay').text());
-    var displayTarget = 'td[name=' + stat + '].saStatsDisplay'
-    if ( text == "+1") {
-      var action = "increase";
-      var newValue = value + 1;
-    } else if ( text == "-1") {
-      var action = "decrease";
-      var newValue = value - 1;
+  var target = event.currentTarget;
+  var stat = target.dataset.stat;
+  var char_id = target.dataset.char_id;
+  var action = target.dataset.action;
+  var origin = target.dataset.origin;
+  var displayTarget = $("#"+stat);
+  var urlTarget = '/character/' + char_id + '/stat/' + stat + '/' + action
+
+  if (action == "set") {
+    var value = displayTarget.val();
+    if (Number.isInteger(value)) {
+      var value = parseInt(value);
+    } else {
+      var value = parseFloat(value);
     }
-    var urlTarget = '/character/' + char_id + '/stat/' + stat + '/' + action
+    var urlTarget = urlTarget + '/' + value;
   }
   $.getJSON(
     $SCRIPT_ROOT + urlTarget, function(data) {
-      $(displayTarget).text(newValue);
-      $(displayTarget).addClass("text-success");
-      $(displayTarget).addClass("font-weight-bold");
-      if (newValue > origin) {
-        $(displayTarget).removeClass("text-danger");
-        $(displayTarget).addClass("text-success");
-        $(displayTarget).addClass("font-weight-bold");
-      } else if (newValue < origin) {
-        $(displayTarget).addClass("text-danger");
-        $(displayTarget).removeClass("text-success");
-        $(displayTarget).addClass("font-weight-bold");
+      displayTarget.text(data.newValue);
+      displayTarget.addClass("text-success");
+      displayTarget.addClass("font-weight-bold");
+      if (data.newValue > origin) {
+        displayTarget.removeClass("text-danger");
+        displayTarget.addClass("text-success");
+        displayTarget.addClass("font-weight-bold");
+      } else if (data.newValue < origin) {
+        displayTarget.addClass("text-danger");
+        displayTarget.removeClass("text-success");
+        displayTarget.addClass("font-weight-bold");
 
-      } else if (newValue == origin) {
-        $(displayTarget).removeClass("text-danger");
-        $(displayTarget).removeClass("text-success");
-        $(displayTarget).removeClass("font-weight-bold");
+      } else if (data.newValue == origin) {
+        displayTarget.removeClass("text-danger");
+        displayTarget.removeClass("text-success");
+        displayTarget.removeClass("font-weight-bold");
       }
-    });
+  });
 }
 
 function controlDmg(event) {
-  var value = event.target.text;
-  var type = event.target.name;
-  var char_id = event.target.id;
-  if (value == "+1") {
-    changeDamage(char_id, type, "increase");
-  } else if (value == "-1") {
-    changeDamage(char_id, type, "decrease");
-  }
-}
-
-function changeDamage(char_id, type, action) {
+  var target = event.currentTarget;
+  var action = target.dataset.action;
+  var type = target.dataset.stat;
+  var char_id = target.dataset.char_id;
+  var urlTarget = '/character/' + char_id + '/damage/' + type + '/' + action
   $.getJSON(
-    $SCRIPT_ROOT + '/character/' + char_id + '/damage/' + type + '/' + action, function(data) {
+    $SCRIPT_ROOT + urlTarget, function(data) {
       updateDamageBoxes(type, data.damage, data.maxDamage);
     }
   )

@@ -31,8 +31,8 @@
   </div>
   </div>
   <div class="saDamageTrackButtons">
-    <a name="physical" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">-1</a>
-    <a name="physical" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">+1</a>
+    <a data-stat="physical" data-action="decrease" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn"><i class="fas fa-minus"></i></a>
+    <a data-stat="physical" data-action="increase" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn"><i class="fas fa-plus"></i></a>
     <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">
       <i class="fas fa-sync-alt"></i>
     </a>
@@ -54,8 +54,8 @@
   {% endfor %}
   </div>
   <div class="saDamageTrackButtons">
-    <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">-1</a>
-    <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">+1</a>
+    <a data-stat="stun" data-action="decrease" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn"><i class="fas fa-minus"></i></a>
+    <a data-stat="stun" data-action="increase" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn"><i class="fas fa-plus"></i></a>
     <a name="stun" id="{{ char.id }}" class="btn btn-sm btn-primary saDmgBtn">
       <i class="fas fa-sync-alt"></i>
     </a>

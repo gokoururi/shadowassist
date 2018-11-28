@@ -24,14 +24,23 @@ body {
   grid-template-rows: 1fr;
 
   padding: 10px 20px;
-  background: #000;
+  background: #650000;
   color: #FFF;
+}
+
+.saNav a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+.saNav a:active {
 }
 
 
 /* Content */
 .content {
   overflow: auto;
+  padding: 5px;
   grid-area: content;
 }
 
@@ -143,7 +152,7 @@ table.saEdit th {
   transition-property: left;
   transition-duration: 0.5s;
   color: #989898;
-  background: #FFF;
+  background: #ffffff;
 }
 
 .saMenue ul {
@@ -204,8 +213,6 @@ table.saEdit th {
     z-index: 30;
     transition-property: left;
     transition-duration: 0.5s;
-    color: #989898;
-    background: #FFF;
 
     border-right: 2px solid #212529;
   }
