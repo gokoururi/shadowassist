@@ -1,6 +1,10 @@
 {% extends "grid.html" %}
 {% block content %}
 
+  {% for attribute in char.attributes %}
+    <div class="text-white">{{ attribute.name }}</div>
+    <div class="text-white">{{ attribute.level[0] }}</div>
+  {% endfor %}
   <div class="sticky-top" style="z-index: 6;">
     <table class="table table-light saTableStats" style="font-size: 0.8em;border-bottom: 1px solid #3d3d3d; text-align: center;">
       <thead class="thead-dark">
@@ -42,12 +46,12 @@
   </div>
 
   <div style="display: flex; flex-wrap: wrap">
-  {%- for skill in skills %}
-    {% if loop.index == ((skills|length)/2)|round(0,"ceil")|int +1  %}
+  {% for skill in char.skills %}
+    {% if loop.index == ((char.skills|length)/2)|round(0,"ceil")|int +1  %}
       </table>
     </div>
     {% endif %}
-    {% if loop.index == 1 or loop.index == ((skills|length)/2)|round(0,"ceil")|int +1 %}
+    {% if loop.index == 1 or loop.index == ((char.skills|length)/2)|round(0,"ceil")|int +1 %}
     <div style="flex-grow: 2;">
       <table class="table table-striped table-hover table-light" style="font-size: 0.8em">
         <thead class="thead-dark">
@@ -72,8 +76,8 @@
             <td>{{ skill.level }}</td>
             <td>{{ skill.level + char[skill.attribute] }}</td>
           </tr>
-      {% if loop.index == skills|length %}
-      {% if (skills|length)/2 != ((skills|length)/2)|int %}
+      {% if loop.index == char.skills|length %}
+      {% if (char.skills|length)/2 != ((char.skills|length)/2)|int %}
         <tr>
           <td colspan=5>-</td>
         </tr>

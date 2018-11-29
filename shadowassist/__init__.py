@@ -33,6 +33,26 @@ if not os.path.isfile(dbPath):
             physDamage=0,
             stunDamage=0
         ),
+        Attribute(
+            name="body",
+            displayName="Konstitution",
+            displayNameShort="K",
+        ),
+        Attribute(
+            name="reaction",
+            displayName="Reaktion",
+            displayNameShort="R",
+        ),
+        CharacterAttributes(
+            character_id=1,
+            attribute_id=1,
+            level=2
+        ),
+        CharacterAttributes(
+            character_id=1,
+            attribute_id=2,
+            level=3
+        ),
         Skill(character_id=1, name="Alchemie",          level=8,    attribute="magic"),
         Specialization(skill_id=1,  name="Berührung"),
         Skill(character_id=1, name="Herbeirufen",       level=6,    attribute="magic"),

@@ -3,21 +3,6 @@ import math
 from shadowassist import app, db
 from shadowassist.models import *
 
-def getSkills(char_id):
-    skills = []
-    for skill in Skill.query.filter(Skill.character_id == char_id).all():
-        specializations = []
-        for specialization in Specialization.query.filter(Specialization.skill_id == skill.id).all():
-            specializations.append({"name": specialization.name})
-        skills.append({
-            "name": skill.name,
-            "level": skill.level,
-            "attribute": skill.attribute,
-            "specializations": specializations
-        })
-    return skills;
-
-
 @app.route("/character")
 @app.route("/character/<int:char_id>")
 def character(char_id=1):
@@ -32,7 +17,6 @@ def character(char_id=1):
         },
     ]
     char = Character.query.filter(Character.id == char_id).first()
-    skills = getSkills(char.id)
     charPhys = math.ceil((char.body/2)+8)
     charStun = math.ceil((char.willpower/2)+8)
     return render_template('character-grid.html', **locals(), title=char.name)
