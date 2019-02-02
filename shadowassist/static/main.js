@@ -13,6 +13,13 @@ function onLoad() {
     $('.saMenueOverlay').on('click touch', closeMenue);
     $('.saDmgBtn').on('click touch', controlDmg);
     $('.saStatsBtn').on('click touch', controlStats);
+    $('.saSpecToggle').on('click touch', toggleSpec);
+}
+
+function toggleSpec(event) {
+    var target = event.currentTarget;
+    var skill = target.dataset.skill;
+    $('.modal-title').text(skill);
 }
 
 function controlStats(event) {

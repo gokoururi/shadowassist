@@ -45,12 +45,12 @@ if not os.path.isfile(dbPath):
         ),
         CharacterAttributes(
             character_id=1,
-            attribute_id=1,
+            attribute_name="body",
             level=2
         ),
         CharacterAttributes(
             character_id=1,
-            attribute_id=2,
+            attribute_name="reaction",
             level=3
         ),
         Skill(character_id=1, name="Alchemie",          level=8,    attribute="magic"),

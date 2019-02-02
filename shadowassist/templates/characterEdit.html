@@ -1,30 +1,29 @@
 {% extends "grid.html" %}
 {% block content %}
-<table class="table table-light table-striped table-hover saEdit" style="text-align: center;">
-  <thead class="thead-dark">
-    <tr>
-      <th>Attribut</th>
-      <th></th>
-      <th>Stufe</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for stat in [
+{% set stats = [
       {"name": "body", "title": "Konstitution" },
       {"name": "agility", "title": "Geschicklichkeit" },
       {"name": "reaction", "title": "Reaktion" },
       {"name": "strength", "title": "Stärke" },
-      {"name": "break"},
       {"name": "charisma", "title": "Charisma" },
       {"name": "intuition", "title": "Intuition" },
       {"name": "logic", "title": "Logik" },
       {"name": "willpower", "title": "Willenskraft" },
-      {"name": "break"},
       {"name": "edge", "title": "Edge" },
       {"name": "magic", "title": "Magie" },
-    ] %}
-      {% if stat.name == "break" %}
+]%}
+<table class="table table-light table-striped table-hover saEdit" style="text-align: center;">
+  <thead class="thead-dark">
+    <tr>
+      <th>Attribut</th>
+      <th style="width: 30px"></th>
+      <th style="width: 120px">Stufe</th>
+      <th style="width: 30px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stat in stats %}
+      {% if loop.index == 5 or loop.index == 9 %}
         </tbody>
         <thead class="thead-dark">
           <tr>
@@ -32,14 +31,13 @@
           </tr>
         </thead>
         <tbody>
-      {% else %}
+      {% endif %}
         <tr>
           <th>{{ stat.title }}</th>
           <td><a data-stat="{{ stat.name }}" data-action="decrease" data-origin="{{ char[stat.name] }}" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn"><i class="fas fa-minus"></i></a></td>
           <td id="{{ stat.name }}">{{ char[stat.name] }}</td>
           <td><a data-stat="{{ stat.name }}" data-action="increase" data-origin="{{ char[stat.name] }}" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn"><i class="fas fa-plus"></i></a></td>
         </tr>
-      {% endif %}
     {% endfor %}
     <tr>
       <th>Essenz</th>
@@ -58,4 +56,73 @@
     </tr>
   </tbody>
 </table>
+
+<table class="table table-light table-striped table-hover saEdit" style="text-align: center;">
+  <thead class="thead-dark">
+    <tr>
+      <th>Fertigkeit</th>
+      <th width="75px">At</th>
+      <th>Sp</th>
+      <th></th>
+      <th>St</th>
+      <th></th>
+      <th>D.</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for skill in char.skills %}
+    <tr>
+      <th>{{ skill.name }}</th>
+      <td>
+        <select class="form-control" id="muh">
+        {% for stat in stats %}
+        {% if skill.attribute|lower == stat.name %}
+          <option selected>{{ stat.title.0 }}</option>
+        {% else %}
+          <option>{{ stat.title.0 }}</option>
+        {% endif %}
+        {% endfor %}
+        </select>
+      <td class="saSpecToggle" data-skill="{{ skill.name }}" data-toggle="modal" data-target="#specialization">
+        {%- for specialization in skill.specializations %}
+          <a class="badge badge-secondary text-white">{{ specialization.name }} </a>
+        {%- endfor %}
+      </td>
+      <td><a data-skill="{{ skill.name }}" data-action="decrease" data-origin="{{ skill.level }}" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn"><i class="fas fa-minus"></i></a></td>
+      <td>{{ skill.level }}</td>
+      <td><a data-skill="{{ skill.name }}" data-action="increase" data-origin="{{ skill.level }}" data-char_id="{{ char.id }}" class="btn btn-sm btn-primary text-white saStatsBtn"><i class="fas fa-plus"></i></a></td>
+      <td>{{ skill.level + char[skill.attribute] }}</td>
+    </tr>
+  {% endfor %}
+    <tr>
+      <td><input type="text" placeholder="Fertigkeit" class="form-control"></input></td>
+      <td>
+        <select class="form-control" id="muh">
+        {% for stat in stats %}
+          <option>{{ stat.title.0 }}</option>
+        {% endfor %}
+        </select>
+      </td>
+      <td><input type="text" placeholder="Stufe" class="form-control"></input></td>
+      <td colspan=4><a class="btn btn-sm btn-primary text-white">Hinzufügen</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="specialization" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="specializationLabel">Verschlingen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Oh Wow</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}

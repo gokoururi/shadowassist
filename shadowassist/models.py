@@ -1,5 +1,6 @@
 from shadowassist import db
 from sqlalchemy.ext.associationproxy import association_proxy
+from sqlalchemy.orm.collections import attribute_mapped_collection
 
 class Character(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,28 +21,25 @@ class Character(db.Model):
     physDamage = db.Column(db.Integer)
     stunDamage = db.Column(db.Integer)
     skills = db.relationship('Skill', backref='character', lazy=True)
-
-    cas = db.relationship("CharacterAttributes", backref="character")
-    attributes = association_proxy("cas", "attribute")
-
+    attributes = db.relationship(
+        "Attribute",
+        secondary="character_attributes",
+        backref="characters",
+        collection_class=attribute_mapped_collection('name')
+    )
 
 class CharacterAttributes(db.Model):
     __tablename__ = 'character_attributes'
-    id = db.Column(db.Integer, primary_key=True)
-    character_id = db.Column(db.Integer, db.ForeignKey('character.id'))
-    attribute_id = db.Column(db.Integer, db.ForeignKey('attribute.id'))
+    character_id = db.Column(db.Integer, db.ForeignKey('character.id'), primary_key=True)
+    attribute_name = db.Column(db.Integer, db.ForeignKey('attribute.name'), primary_key=True)
     level = db.Column(db.Integer)
 
-    #attribute = db.relationship("Attribute", backref="CharacterAttributes")
-
 class Attribute(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20))
+    name = db.Column(db.String(20), primary_key=True)
     displayName = db.Column(db.String(10))
     displayNameShort = db.Column(db.String(5))
-    cas = db.relationship("CharacterAttributes", backref="attribute")
+    cas = db.relationship("CharacterAttributes")
     level = association_proxy("cas", "level")
-#    characters = db.relationship("CharacterAttributes", primaryjoin=id == CharacterAttributes.attribute_id)
 
 
 class Skill(db.Model):
